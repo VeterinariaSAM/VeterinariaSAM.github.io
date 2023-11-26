@@ -17,7 +17,6 @@ function iniciarSesionGoogle() {
                 if (doc.exists) {
                     // El usuario ya está registrado, puedes actualizar su información si es necesario
                     console.log("Usuario ya registrado:", doc.data());
-                    mostrarMensajeAdvertencia("Ya estás registrado. No es necesario volver a registrarte.");
                 } else {
                     // El usuario no está registrado, guarda su información en la base de datos
                     usuarioRef.set({
@@ -61,13 +60,5 @@ function mostrarMensajeError(mensaje) {
         title: 'Error',
         text: mensaje,
         icon: 'error',
-    });
-}
-
-function mostrarMensajeAdvertencia(mensaje) {
-    Swal.fire({
-        title: 'Advertencia',
-        text: mensaje,
-        icon: 'warning',
     });
 }
