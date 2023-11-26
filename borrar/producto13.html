@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Producto</title>
+    <link rel="stylesheet" href="estilos/estiloIndex.css">
+</head>
+<body>
+    
+    <div class="container">
+        <nav class="sidebar">
+            <header class="scroll-header">
+                <div class="header-title">
+                    <button id="toggleSidebar">☰</button>
+                    <div class="header-logo">
+                        <a href="index.html">
+                            <img src="Imageneshtml/LogoSAM2.png" alt="Logo">
+                        </a>
+                    </div>
+                </div>
+                <div class="menu-icon" onclick="toggleMenu()">
+                    <a href="sesion.html" class="header-button">
+                        <span id="nombreDeUsuario"></span>
+                        <img src="Imageneshtml/usuario.png" alt="Usuario">
+                    </a>
+                </div>
+               
+                <a href="carrito.html" class="header-button">
+                    <img src="Imageneshtml/carritoo.png" alt="Carrito">
+                </a>
+            </header>
+            <ul>
+                <li class="active"><a href="catalogoProductos.html">Productos</a></li>
+                <li class="active"><a href="contacto.html">Contacto</a></li>
+                <li class="active"><a href="citas.html">Agendar Cita</a></li>
+                <li class="active"><a href="somos.html">¿Quienes Somos?</a></li>
+            </ul>
+        </nav>
+<br>
+<br>
+<br>
+<body>
+    <div class="producto">
+        <div class="imagen">
+            <img src="Imageneshtml/Kitlimpieza-removebg-preview.png" alt="Producto">
+        </div>
+        <div class="informacion">
+            <h1>Collar para perro</h1>
+            <p>Collar de piel de color rojo para perro cachorro, de la marca Que perron</p>
+            <p>Disponibilidad: <span class="disponible">Disponible</span></p>
+            <p>Marca:  Que perron</p>
+            <p>Número de serie: 6138</p>
+            <p>Precio: $150</p>
+        </div>
+    </div>
+    <form action="#" method="post">
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" value="1" min="1" max="10">
+        <div class="botones">
+            <button type="submit" name="add_to_cart">Agregar al carrito</button>
+            <button type="submit" name="buy_now">Comprar ahora</button>
+        </div>
+    </form>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer>
+        <div class="footer-container">
+            <div class="social-media">
+                <ul>
+                    <li><a href="https://www.facebook.com/profile.php?id=100094700436543&mibextid=LQQJ4d"
+                            target="_blank"><img src="Imageneshtml/logoFB.png" alt="Facebook"></a></li>
+                    <li><a href="https://www.instagram.com/veterinarias.a.m/?igshid=OGQ5ZDc2ODk2ZA%3D%3D"
+                            target="_blank"><img src="Imageneshtml/logoIG.png" alt="Instagram"></a></li>
+                    <li><a href="https://api.whatsapp.com/send?phone=1234567890" target="_blank"><img
+                                src="Imageneshtml/logoWA.png" alt="WhatsApp"></a></li>
+                    <p>&copy; 2023 Veterinaria S.A.M Phantoms</p>
+                    <p>Calle Glorieta de Fuente de Petróleos 340, Evolucion, 57700 Nezahualcóyotl, Méx.</p>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="politica-privacidad.html">Política de Privacidad |</a></li>
+                    <li><a href="#">Preguntas frecuentes | </a></li>
+                    <li><a href="mailto:veterinariasam102@gmail.com">veterinariasam102@gmail.com</a></li>
+                </ul>
+            </div>
+            <div>
+                <br>
+            </div>
+        </div>
+    </footer>
+
+    <!-- este es el script del banner-->
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function showSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(showSlide, 2500);
+
+    </script>
+
+
+    <!-- este alch igual no se de que sea, ya estaba cuando llegue jajaja 💀-->
+    <script>
+        document.getElementById('toggleSidebar').addEventListener('click', function () {
+            document.querySelector('.sidebar').classList.toggle('open');
+        });
+        let mostrador = document.getElementById("mostrador");
+        let seleccion = document.getElementById("seleccion");
+        let imgSeleccionada = document.getElementById("img");
+        let modeloSeleccionado = document.getElementById("modelo");
+        let descripSeleccionada = document.getElementById("descripcion");
+        let precioSeleccionado = document.getElementById("precio");
+        let descuentoSeleccionado = document.getElementById("descuento");
+
+        function cargar(item) {
+            quitarBordes();
+            mostrador.style.width = "60%";
+            seleccion.style.width = "40%";
+            seleccion.style.opacity = "1";
+            item.style.border = "2px solid red";
+
+            imgSeleccionada.src = item.getElementsByTagName("img")[0].src;
+
+            modeloSeleccionado.innerHTML = item.getElementsByTagName("p")[0].innerHTML;
+
+            descripSeleccionada.innerHTML = "Descripción del Poducto ";
+
+            precioSeleccionado.innerHTML = item.getElementsByTagName("span")[0].innerHTML;
+
+
+        }
+        function cerrar() {
+            mostrador.style.width = "100%";
+            seleccion.style.width = "0%";
+            seleccion.style.opacity = "0";
+            quitarBordes();
+        }
+        function quitarBordes() {
+            var items = document.getElementsByClassName("item");
+            for (i = 0; i < items.length; i++) {
+                items[i].style.border = "none";
+            }
+        }
+    </script>
+
+
+    <!-- este we se encarga de que el header se minimice al bajar o navegar en la pagina-->
+    <script>
+        window.addEventListener('scroll', function () {
+            var header = document.querySelector('.scroll-header');
+            if (window.scrollY > 100) {
+                header.classList.add('small');
+            } else {
+                header.classList.remove('small');
+            }
+        });
+
+    </script>
+
+
+    <!-- script que hace la chamba de desaparecer el perro icono de whats que esta en la derecha inferior-->
+    <script>
+        // Obtener el elemento del ícono de WhatsApp
+        const whatsappIcon = document.querySelector('.whatsapp-icon');
+
+        // Función para verificar la posición del scroll y ocultar el ícono cuando se llega al final
+        function hideWhatsAppIcon() {
+            const scrollPosition = window.scrollY || window.pageYOffset;
+            const windowHeight = window.innerHeight;
+            const documentHeight = Math.max(
+                document.body.scrollHeight,
+                document.documentElement.scrollHeight,
+                document.body.offsetHeight,
+                document.documentElement.offsetHeight,
+                document.body.clientHeight,
+                document.documentElement.clientHeight
+            );
+
+            if (scrollPosition + windowHeight >= documentHeight - 100) {
+                whatsappIcon.style.display = 'none';
+            } else {
+                whatsappIcon.style.display = 'block';
+            }
+        }
+
+        // Ejecutar la función al cargar la página y al hacer scroll
+        window.addEventListener('DOMContentLoaded', hideWhatsAppIcon);
+        window.addEventListener('scroll', hideWhatsAppIcon);
+    </script>
+
+
+    <!--este es pa cuando se haga clic fuera del banner, este se cierre auto -->
+    <script>
+        document.addEventListener('click', function (event) {
+            var sidebar = document.querySelector('.sidebar');
+            var targetElement = event.target;
+
+            if (!sidebar.contains(targetElement) && targetElement.id !== 'toggleSidebar') {
+                sidebar.classList.remove('open');
+            }
+        });
+
+    </script>
+
+
+    <!--el contador -->
+    <script>
+        // Obtener los elementos necesarios
+        const quantityInputs = document.querySelectorAll(".quantity-input");
+        const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+        const cartCounter = document.querySelector(".cart-counter");
+
+        // Función para actualizar el contador general del carrito
+        function updateCartCounter() {
+            let totalItems = 0;
+            quantityInputs.forEach(input => {
+                totalItems += parseInt(input.value);
+            });
+            cartCounter.textContent = totalItems;
+        }
+
+        // Evento para el botón "Agregar al carrito"
+        addToCartButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                // Obtener el input de cantidad del producto actual
+                const quantityInput = button.parentElement.querySelector(".quantity-input");
+                // Obtener la cantidad actual de productos en el carrito
+                let currentCartItems = parseInt(cartCounter.textContent);
+                // Agregar la cantidad del producto actual al carrito
+                currentCartItems += parseInt(quantityInput.value);
+                // Actualizar el contador general del carrito
+                cartCounter.textContent = currentCartItems;
+            });
+        });
+
+        // Eventos para los botones "+" y "-"
+        quantityInputs.forEach(input => {
+            input.addEventListener("change", () => {
+                // Verificar que la cantidad no sea menor a 1
+                if (input.value < 1) {
+                    input.value = 1;
+                }
+                // Actualizar el contador general del carrito
+                updateCartCounter();
+            });
+
+            const minusBtn = input.parentElement.querySelector(".minus");
+            minusBtn.addEventListener("click", () => {
+                // Reducir la cantidad en 1
+                if (input.value > 1) {
+                    input.value--;
+                }
+                // Actualizar el contador general del carrito
+                updateCartCounter();
+            });
+
+            const plusBtn = input.parentElement.querySelector(".plus");
+            plusBtn.addEventListener("click", () => {
+                // Incrementar la cantidad en 1
+                input.value++;
+                // Actualizar el contador general del carrito
+                updateCartCounter();
+            });
+        });
+    </script>
+
+
+
+    <script>
+        (() => {
+            function documentReady() {
+              const miElemento = document.getElementById('nombreDeUsuario');
+              miElemento.textContent = localStorage.getItem("nombre");
+              console.log(localStorage.getItem("nombre"));
+            }
+            document.addEventListener('DOMContentLoaded', documentReady);
+          })();
+
+    </script>
+
+</body>
+</html>

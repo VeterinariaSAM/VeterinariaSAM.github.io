@@ -1,0 +1,1011 @@
+.contact {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: rgb(255, 85, 0);
+}
+
+.contact h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: rgb(53, 6, 77);
+}
+
+.contact p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #333;
+}
+
+.contact form {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.contact label {
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.contact textarea {
+    resize: vertical;
+}
+
+.contact button {
+    background-color: rgb(255, 85, 0);
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+.social-links {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.social-icons {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-icons li {
+    margin-right: 10px;
+}
+
+.social-icons img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.2);
+}
+
+/* Estilos adicionales para el pie de página */
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+
+
+
+/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* el icono de pinche whats que va siguiendo la navegacion alv */
+.whatsapp-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.whatsapp-icon:hover {
+    transform: scale(1.1);
+    background-color: rgb(255, 85, 0);
+}
+
+.whatsapp-icon a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+}
+
+.whatsapp-icon img {
+    width: 30px;
+    height: auto;
+}
+
+.whatsapp-message {
+    margin-top: 5px;
+}
+
+/* ---------------------------------------- */
+
+/* seccion de productos que interesan */
+.buttonMasProductos {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(53, 6, 77);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+}
+
+.buttonMasProductos:hover {
+    transform: scale(1.1);
+    background-color: rgb(255, 85, 0);
+}
+
+
+
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+    position: relative;
+}
+
+/* ---------------------------------------- */
+
+
+/* Encabezado */
+.header-logo {
+    margin-right: 20px;
+}
+
+.header-logo img {
+    width: 400px;
+    /* Ajusta el tamaño de la imagen según tus necesidades */
+}
+
+header {
+    /* background-color: rgb(255, 85, 0); */
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5vw;
+    margin: 0;
+    margin-left: 20%;
+}
+
+#toggleSidebar {
+    font-size: 50px;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    left: 20px;
+}
+
+.scroll-header {
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.816);
+}
+
+.scroll-header.small {
+    padding: 10px;
+    height: 60px;
+    background-color: rgb(53, 6, 77);
+}
+
+.scroll-header.small h1 {
+    font-size: 1.5vw;
+}
+
+.scroll-header.small #toggleSidebar {
+    font-size: 30px;
+}
+
+.header-button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin: 0 40px; /* Modifica el margen horizontal para acercar las opciones */
+}
+
+.header-button img {
+    width: 45px;
+    /* Ajusta el tamaño de la imagen según tus necesidades */
+}
+
+/* Alinea las opciones al centro verticalmente */
+.header-title,
+.header-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown {
+    position: relative;
+    margin-left: 10px;
+    /* Agregar margen entre las opciones */
+}
+
+.cart-button,
+.login-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.cart-button img {
+    width: 30px;
+    /* Ajusta el tamaño de la imagen según tus necesidades */
+}
+
+.login-button {
+    font-size: 1.2vw;
+    /* Ajusta el tamaño de la fuente según tus necesidades */
+    color: #fff;
+}
+
+.login-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(255, 85, 0);
+    padding: 10px;
+    list-style: none;
+    margin: 0;
+    width: 150px;
+}
+
+.login-dropdown:hover .login-options {
+    display: block;
+}
+
+.login-options li {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 5px;
+}
+
+.login-options a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.dropdown-button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.dropdown-button img {
+    width: 25px;
+    height: 25px;
+}
+
+.dropdown-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(255, 85, 0);
+    padding: 10px;
+    list-style: none;
+    margin: 0;
+    width: 150px;
+}
+
+.dropdown:hover .dropdown-options {
+    display: block;
+}
+
+.dropdown-options li {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 5px;
+}
+
+.dropdown-options a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.dropdown-user {
+    margin-right: 10px;
+    /* Ajusta el valor según tu preferencia */
+}
+
+.dropdown-cart {
+    margin-right: 20px;
+    /* Ajusta el valor según tu preferencia */
+}
+
+
+
+/* Barra de navegación lateral */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+    z-index: 999;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+.sidebar {
+    background-color: rgba(255, 255, 255, 0.762);
+    color: rgb(255, 255, 255);
+    width: 0;
+    overflow: hidden;
+    transition: width 0.3s ease-in-out;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1000;
+}
+
+.sidebar.open {
+    width: 250px;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 55%;
+}
+
+.sidebar li {
+    margin-top: 20%;
+    margin-bottom: 10px;
+    padding-left: 5%;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.sidebar li.active {
+    font-size: 2vw;
+}
+
+.sidebar li {
+    list-style-type: none;
+    padding: 5px;
+}
+
+.sidebar li:hover {
+    background-color: #000000;
+}
+
+.sidebar li:hover a {
+    color: #fff;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: rgb(255, 255, 255)000;
+    font-size: 2vw;
+}
+
+.sidebar li:hover {
+    background-color: rgb(255, 85, 0);
+}
+
+.sidebar li:hover a {
+    color: rgb(255, 255, 255);
+}
+
+/* Contenido principal */
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 3vw;
+    color: rgb(53, 6, 77);
+}
+
+h3 {
+    font-size: 2vw;
+    color: rgb(53, 6, 77);
+}
+/* ---------------------------------------- */
+
+
+/* Catálogo de productos */
+
+.catalog {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.product {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.product:hover {
+    transform: scale(1.05);
+    background-color: rgb(255, 85, 0);
+}
+
+.product-image {
+    text-align: center;
+}
+
+.product-info {
+    text-align: center;
+}
+
+.product h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.product p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.product p.price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+}
+/* Estilos para los botones de cantidad */
+.quantity-btn {
+    font-size: 18px;
+    padding: 5px 10px;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+/* Estilos para el botón "Agregar al carrito" */
+.add-to-cart-btn {
+    font-size: 14px;
+    padding: 8px 15px;
+    background-color: rgb(53, 6, 77);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+/* Estilos para el contenedor de los botones y el contador de cantidad */
+.product-controls {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+/* Estilos para el contador de cantidad */
+.quantity-input {
+    font-size: 16px;
+    width: 40px;
+    text-align: center;
+    margin: 0 5px;
+}
+/* Estilos para el contador del carrito */
+.cart-counter {
+    position: absolute;
+    top: -10px; /* Ajusta el valor para posicionar el contador donde desees */
+    right: -10px; /* Ajusta el valor para posicionar el contador donde desees */
+    background-color: red;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Asegúrate de que el z-index sea mayor que el z-index del carrito o cualquier otro elemento del header */
+}
+
+
+/* Media Queries para hacerlo responsivo */
+@media screen and (max-width: 768px) {
+    .catalog {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .product {
+        max-width: 250px;
+    }
+
+    .product h3 {
+        font-size: 1.1rem;
+    }
+
+    .product p {
+        font-size: 0.8rem;
+    }
+
+    .product p.price {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .catalog {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    }
+
+    .product {
+        max-width: 200px;
+    }
+
+    .product h3 {
+        font-size: 1rem;
+    }
+
+    .product p {
+        font-size: 0.7rem;
+    }
+
+    .product p.price {
+        font-size: 0.9rem;
+    }
+}
+
+
+/* --------------------------------------------- */
+
+/* Estilos para seccion de info */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.info-section {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.info-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(53, 6, 77);
+    opacity: 0.8;
+    z-index: -1;
+}
+
+.info-box {
+    width: 23%;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color:  rgb(53, 6, 77);
+    transition: background-color 0.3s; 
+}
+
+.info-box img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+}
+
+.info-box h4 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: rgb(255, 255, 255);
+    /* Color del texto */
+}
+
+.info-box p {
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    /* Color del texto */
+}
+
+.info-box li {
+    font-size: 13px;
+    color: rgb(255, 255, 255); /* Color del texto en las etiquetas <li> */
+    margin-bottom: 5px;
+}
+
+/* Cambiamos el color al pasar el cursor */
+.info-box:hover {
+    background-color: rgb(255, 85, 0);
+}
+  
+/* Media Queries para hacerlo responsive */
+@media screen and (max-width: 768px) {
+    .info-section {
+      flex-direction: column; /* Cambia a una columna en pantallas pequeñas */
+    }
+  
+    .info-box {
+      width: 100%;
+    }
+}
+
+
+/* ------------------------------------------------- */
+
+/* Estilos para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    .catalog {
+        grid-template-columns: 1fr;
+    }
+
+    .product {
+        max-width: 100%;
+    }
+}
+
+/* Pie de página */
+footer {
+    background-color: rgb(53, 6, 77);
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-media ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+.social-media ul li {
+    margin-right: 10px;
+}
+
+.social-media ul li img {
+    transition: transform 0.3s ease;
+}
+
+.social-media ul li img:hover {
+    transform: scale(1.2);
+}
+
+.footer-info {
+    text-align: right;
+}
+
+
+.footer-container .social-media ul,
+.footer-container .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-container .social-media ul li,
+.footer-container .footer-links ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.footer-container .social-media ul li a,
+.footer-container .footer-links ul li a {
+    display: block;
+}
+
+.footer-container .footer-info p {
+    margin-bottom: 10px;
+}
+
+.footer-container .footer-links ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.footer-container .footer-image img {
+    width: 30px;
+    height: 30px;
+}
+
+.footer-container .footer-image img:hover {
+    opacity: 0.7;
+}
+
+.footer-container .social-media ul li a img,
+.footer-container .footer-image img {
+    width: 20px;
+    height: 20px;
+}
+
+/* -------seccion de las citas jasjdjasj -------- */
+
+.cita-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.cita-option {
+    position: relative;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.cita-option img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.cita-option:hover {
+    transform: scale(1.1);
+}
+
+.cita-option:hover img {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.cita-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+}
+
+h5 {
+    font-size: 1.5rem;
+}
+
+.cita-overlay h5,
+.cita-overlay p {
+    margin: 50px 0;
+}
+
+.cita-option p {
+    font-size: 1.3rem;
+}
+
+/* Media Queries para hacerlo responsivo */
+@media screen and (max-width: 768px) {
+    .cita-section {
+        flex-direction: column;
+    }
+
+    .cita-option {
+        margin-bottom: 30px;
+    }
+
+    .cita-option img {
+        max-width: 100%;
+    }
+}
+
+
+
+
+/*-------------------------------------- */
+
+/* seccion de los perritos adoptados jajaja oww q bonitos se ven los geis */
+/* gei tu, con los perros no te metas puto */
+.seccionAdop {
+    position: relative;
+}
+
+.seccionAdop img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 300px;
+}
+
+.adoption-message {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(255, 255, 255);
+}
+
+.adoption-message h4 {
+    font-size: 2vw;
+    margin: 0;
+}
+
+.adoption-stats {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+}
+
+.adoption-stat {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.adoption-text h4 {
+    font-size: 70px;
+    margin: 30px 0;
+}
+
+.adoption-text p {
+    font-size: 25px;
+    margin: 30px 0;
+}
+
+/* Media Queries para hacerlo responsivo */
+@media screen and (max-width: 768px) {
+    .adoption-message h4 {
+        font-size: 3.5vw;
+    }
+
+    .adoption-text h4 {
+        font-size: 50px;
+        margin: 20px 0;
+    }
+
+    .adoption-text p {
+        font-size: 18px;
+        margin: 20px 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .adoption-message h4 {
+        font-size: 5vw;
+    }
+
+    .adoption-text h4 {
+        font-size: 40px;
+        margin: 15px 0;
+    }
+
+    .adoption-text p {
+        font-size: 16px;
+        margin: 15px 0;
+    }
+}
+
+
+/* ------------------------------ */
+
+
+/* Estilos para el banner */
+.banner {
+    width: 100%;
+    height: 300px; /* Altura original del banner */
+    max-height: 70vh; /* Altura máxima del banner (70% del alto de la ventana) */
+    position: relative;
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: -1;
+}
+
+.banner img.active {
+    opacity: 1;
+    z-index: -1;
+}
+
+/* Estilos para el contenedor del slideshow */
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 33.33%; /* Relación de aspecto 3:1 para las imágenes del slideshow */
+    overflow: hidden;
+}
+
+/* Estilos para cada slide */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+    .banner {
+        height: 200px; /* Altura ajustada para pantallas más pequeñas */
+        max-height: 50vh; /* Altura máxima ajustada para pantallas más pequeñas */
+    }
+}

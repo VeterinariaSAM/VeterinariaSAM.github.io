@@ -1,0 +1,457 @@
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    margin: 20px;
+    background-color: #f1f1f1;
+  }
+  
+  .container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #bf00ff;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="date"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #004ea2;
+  }
+  
+/* Estilos para los elementos <li> dentro del formulario */
+.form-container li {
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Estilos para los elementos <li> dentro del formulario */
+.form-container li {
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px; /* Ajusta el tamaño máximo según tus necesidades */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+}
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px; /* Limit the maximum width of the form container */
+  margin: 0 auto; /* Center the form horizontally */
+  padding: 20px; /* Add some padding to the form container */
+}
+
+  
+/* Pie de página */
+footer {
+  background-color: rgb(53, 6, 77);
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  margin-top: 50%;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social-media ul {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+}
+
+.social-media ul li {
+  margin-right: 10px;
+}
+
+.social-media ul li img {
+  transition: transform 0.3s ease;
+}
+
+.social-media ul li img:hover {
+  transform: scale(1.2);
+}
+
+.footer-info {
+  text-align: right;
+}
+
+
+.footer-container .social-media ul,
+.footer-container .footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-container .social-media ul li,
+.footer-container .footer-links ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.footer-container .social-media ul li a,
+.footer-container .footer-links ul li a {
+  display: block;
+}
+
+.footer-container .footer-info p {
+  margin-bottom: 10px;
+}
+
+.footer-container .footer-links ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.footer-container .footer-image img {
+  width: 30px;
+  height: 30px;
+}
+
+.footer-container .footer-image img:hover {
+  opacity: 0.7;
+}
+
+.footer-container .social-media ul li a img,
+.footer-container .footer-image img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Estilos generales */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Encabezado */
+.header-logo {
+  margin-right: 20px;
+}
+
+.header-logo img {
+  width: 400px;
+  /* Ajusta el tamaño de la imagen según tus necesidades */
+}
+
+header {
+  background-color: rgb(255, 85, 0);
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5vw;
+  margin: 0;
+  margin-left: 20%;
+}
+
+#toggleSidebar {
+  font-size: 50px;
+  background-color: transparent;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  position: absolute;
+  left: 20px;
+}
+
+.scroll-header {
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.816);
+}
+
+.scroll-header.small {
+  padding: 10px;
+  height: 60px;
+  background-color: rgb(53, 6, 77);
+}
+
+.scroll-header.small h1 {
+  font-size: 1.5vw;
+}
+
+.scroll-header.small #toggleSidebar {
+  font-size: 30px;
+}
+
+.header-button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin: 0 40px; /* Modifica el margen horizontal para acercar las opciones */
+}
+
+.header-button img {
+  width: 45px;
+  /* Ajusta el tamaño de la imagen según tus necesidades */
+}
+
+/* Alinea las opciones al centro verticalmente */
+.header-title,
+.header-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown {
+  position: relative;
+  margin-left: 10px;
+  /* Agregar margen entre las opciones */
+}
+
+.cart-button,
+.login-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.cart-button img {
+  width: 30px;
+  /* Ajusta el tamaño de la imagen según tus necesidades */
+}
+
+.login-button {
+  font-size: 1.2vw;
+  /* Ajusta el tamaño de la fuente según tus necesidades */
+  color: #fff;
+}
+
+.login-options {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgb(255, 85, 0);
+  padding: 10px;
+  list-style: none;
+  margin: 0;
+  width: 150px;
+}
+
+.login-dropdown:hover .login-options {
+  display: block;
+}
+
+.login-options li {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 5px;
+}
+
+.login-options a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.dropdown-button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.dropdown-button img {
+  width: 25px;
+  height: 25px;
+}
+
+.dropdown-options {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgb(255, 85, 0);
+  padding: 10px;
+  list-style: none;
+  margin: 0;
+  width: 150px;
+}
+
+.dropdown:hover .dropdown-options {
+  display: block;
+}
+
+.dropdown-options li {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 5px;
+}
+
+.dropdown-options a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.dropdown-user {
+  margin-right: 10px;
+  /* Ajusta el valor según tu preferencia */
+}
+
+.dropdown-cart {
+  margin-right: 20px;
+  /* Ajusta el valor según tu preferencia */
+}
+
+
+
+/* Barra de navegación lateral */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+  z-index: 999;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.sidebar {
+  background-color: rgba(255, 255, 255, 0.762);
+  color: rgb(255, 255, 255);
+  width: 0;
+  overflow: hidden;
+  transition: width 0.3s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 1000;
+}
+
+.sidebar.open {
+  width: 250px;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 55%;
+}
+
+.sidebar li {
+  margin-top: 20%;
+  margin-bottom: 10px;
+  padding-left: 5%;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+.sidebar li.active {
+  font-size: 2vw;
+}
+
+.sidebar li {
+  list-style-type: none;
+  padding: 5px;
+}
+
+.sidebar li:hover {
+  background-color: #000000;
+}
+
+.sidebar li:hover a {
+  color: #fff;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: rgb(255, 255, 255)000;
+  font-size: 2vw;
+}
+
+.sidebar li:hover {
+  background-color: rgb(255, 85, 0);
+}
+
+.sidebar li:hover a {
+  color: rgb(255, 255, 255);
+}
