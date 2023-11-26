@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<meta charset="UTF-8">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veterinaria SAM</title>
+    <link rel="icon" href="Imageneshtml/icono.png">
+    <link rel="stylesheet" href="estilos/estiloSomos.css">
+    <link rel="stylesheet" href="estilos/app.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="one-header">
+            <script src="./js/navbar.js"></script>
+        </div>
+    
+        <section class="about-us">
+            <div class="mission">
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br><br>
+
+                <h2>MISIÓN</h2>
+                <p>
+                    Nuestra misión es proporcionar atención integral y especializada para las mascotas, promoviendo su salud,
+                    bienestar y felicidad. Nos esforzamos por brindar un servicio cálido y personalizado, estableciendo un vínculo
+                    de confianza con nuestros clientes y sus queridas mascotas. Además, nos comprometemos a ofrecer productos de
+                    calidad y asesoramiento experto para el cuidado diario de las mascotas.
+                </p>
+            </div>
+        
+            <div class="vision">
+                <h2>VISIÓN</h2>
+                <p>
+                    Nuestra visión es convertirnos en el referente de excelencia en el cuidado veterinario, reconocidos por nuestra
+                    calidad de servicio, ética profesional y compromiso con la salud y el bienestar animal. Buscamos expandir nuestros
+                    horizontes y continuar creciendo, siempre a la vanguardia de los avances tecnológicos y médicos en el campo de la
+                    veterinaria.
+                </p>
+            </div>
+        
+            <div class="values">
+                <h2>VALORES</h2>
+                <ul>
+                    <li>
+                        <strong>Compromiso:</strong> Nos comprometemos a brindar una atención personalizada, cuidadosa y compasiva a
+                        cada mascota que atendemos. Nos preocupamos profundamente por su bienestar y nos esforzamos por establecer
+                        relaciones duraderas con nuestros clientes.
+                    </li>
+                    <li>
+                        <strong>Excelencia:</strong> Nos esforzamos por mantener los más altos estándares de calidad en nuestros
+                        servicios y productos. Buscamos la excelencia en cada aspecto de nuestra labor veterinaria, desde el diagnóstico
+                        y tratamiento hasta el asesoramiento y la atención al cliente.
+                    </li>
+                    <li>
+                        <strong>Ética:</strong> Actuamos con integridad y respeto hacia los animales, los propietarios de mascotas y
+                        nuestros colegas. Trabajamos dentro de los límites éticos y legales, siempre velando por el bienestar de las
+                        mascotas y la confianza de nuestros clientes.
+                    </li>
+                    <li>
+                        <strong>Colaboración:</strong> Valoramos el trabajo en equipo y creemos en la importancia de colaborar con otros
+                        profesionales veterinarios y especialistas para brindar la mejor atención posible. Fomentamos un ambiente de
+                        respeto, confianza y aprendizaje mutuo.
+                    </li>
+                    <li>
+                        <strong>Innovación:</strong> Nos mantenemos actualizados en los avances científicos y tecnológicos de la medicina
+                        veterinaria para ofrecer las mejores soluciones y tratamientos a nuestros pacientes. Buscamos la innovación y la
+                        mejora continua en beneficio de las mascotas que atendemos.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+        <div class="whatsapp-icon">
+            <a href="https://api.whatsapp.com/send?phone=14804396072" target="_blank">
+                <img src="Imageneshtml/Whatsapplogo.png" alt="WhatsApp">
+                <span class="whatsapp-message">Escríbenos😋</span>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="social-media">
+                <ul>
+                    <li><a href="https://www.facebook.com/profile.php?id=100095350443486"
+                        target="_blank"><img src="Imageneshtml/logoFB.png" alt="Facebook"></a></li>
+                <li><a href="https://instagram.com/vet_s.a.m?igshid=MzNlNGNkZWQ4Mg=="
+                        target="_blank"><img src="Imageneshtml/logoIG.png" alt="Instagram"></a></li>
+                        <li><a href="https://api.whatsapp.com/send?phone=14804396072" target="_blank"><img src="Imageneshtml/logoWA.png" alt="WhatsApp"></a></li>
+
+                <p>&copy; 2023 Veterinaria S.A.M Phantoms</p>
+                    <p>Calle Glorieta de Fuente de Petróleos 340, Evolucion, 57700 Nezahualcóyotl, Méx.</p>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="politicas.html">Política de Privacidad |</a></li>
+                    <li><a href="Dudas.html">Preguntas frecuentes | </a></li>
+                    <li><a href="mailto:veterinariasam102@gmail.com">veterinariasam102@gmail.com</a></li>
+                </ul>
+            </div>
+            <div>
+                <br>
+            </div>
+        </div>
+    </footer>
+
+    <!-- script que hace la chamba de desaparecer el perro icono de whats que esta en la derecha inferior-->
+    <script>
+        // Obtener el elemento del ícono de WhatsApp
+        const whatsappIcon = document.querySelector('.whatsapp-icon');
+
+        // Función para verificar la posición del scroll y ocultar el ícono cuando se llega al final
+        function hideWhatsAppIcon() {
+            const scrollPosition = window.scrollY || window.pageYOffset;
+            const windowHeight = window.innerHeight;
+            const documentHeight = Math.max(
+                document.body.scrollHeight,
+                document.documentElement.scrollHeight,
+                document.body.offsetHeight,
+                document.documentElement.offsetHeight,
+                document.body.clientHeight,
+                document.documentElement.clientHeight
+            );
+
+            if (scrollPosition + windowHeight >= documentHeight - 100) {
+                whatsappIcon.style.display = 'none';
+            } else {
+                whatsappIcon.style.display = 'block';
+            }
+        }
+
+        // Ejecutar la función al cargar la página y al hacer scroll
+        window.addEventListener('DOMContentLoaded', hideWhatsAppIcon);
+        window.addEventListener('scroll', hideWhatsAppIcon);
+    </script>
+
+    <!--el contador -->
+    <script>
+        // Obtener los elementos necesarios
+        const quantityInputs = document.querySelectorAll(".quantity-input");
+        const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+        const cartCounter = document.querySelector(".cart-counter");
+
+        // Función para actualizar el contador general del carrito
+        function updateCartCounter() {
+            let totalItems = 0;
+            quantityInputs.forEach(input => {
+                totalItems += parseInt(input.value);
+            });
+            cartCounter.textContent = totalItems;
+        }
+
+        // Evento para el botón "Agregar al carrito"
+        addToCartButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                // Obtener el input de cantidad del producto actual
+                const quantityInput = button.parentElement.querySelector(".quantity-input");
+                // Obtener la cantidad actual de productos en el carrito
+                let currentCartItems = parseInt(cartCounter.textContent);
+                // Agregar la cantidad del producto actual al carrito
+                currentCartItems += parseInt(quantityInput.value);
+                // Actualizar el contador general del carrito
+                cartCounter.textContent = currentCartItems;
+            });
+        });
+
+        // Eventos para los botones "+" y "-"
+        quantityInputs.forEach(input => {
+            input.addEventListener("change", () => {
+                // Verificar que la cantidad no sea menor a 1
+                if (input.value < 1) {
+                    input.value = 1;
+                }
+                // Actualizar el contador general del carrito
+                updateCartCounter();
+            });
+
+            const minusBtn = input.parentElement.querySelector(".minus");
+            minusBtn.addEventListener("click", () => {
+                // Reducir la cantidad en 1
+                if (input.value > 1) {
+                    input.value--;
+                }
+                // Actualizar el contador general del carrito
+                updateCartCounter();
+            });
+
+            const plusBtn = input.parentElement.querySelector(".plus");
+            plusBtn.addEventListener("click", () => {
+                // Incrementar la cantidad en 1
+                input.value++;
+                // Actualizar el contador general del carrito
+                updateCartCounter();
+            });
+        });
+    </script>
+
+
+
+    <script src="js/navegacion.js"></script>
+</body>
+
+</html>

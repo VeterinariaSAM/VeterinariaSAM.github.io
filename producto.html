@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Producto</title>
+    <link rel="icon" href="Imageneshtml/icono.png">
+    <link rel="stylesheet" href="estilos/estiloIndex.css">
+    <link rel="stylesheet" href="estilos/app.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="one-header">
+            <script src="./js/navbar.js"></script>
+        </div>
+
+<body>
+    <div class="producto">
+        <!-- Carga dinamica -->
+    </div>
+    <form action="#" method="post">
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" value="1" min="1" max="10">
+        <div class="botones">
+            <button type="submit" name="add_to_cart">Agregar al carrito</button>
+            <button type="submit" name="buy_now">Comprar ahora</button>
+        </div>
+    </form>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <footer>
+        <div class="footer-container">
+            <div class="social-media">
+                <ul>
+                    <li><a href="https://www.facebook.com/profile.php?id=100095350443486"
+                        target="_blank"><img src="Imageneshtml/logoFB.png" alt="Facebook"></a></li>
+                <li><a href="https://instagram.com/vet_s.a.m?igshid=MzNlNGNkZWQ4Mg=="
+                        target="_blank"><img src="Imageneshtml/logoIG.png" alt="Instagram"></a></li>
+                        <li><a href="https://api.whatsapp.com/send?phone=14804396072" target="_blank"><img src="Imageneshtml/logoWA.png" alt="WhatsApp"></a></li>
+
+                <p>&copy; 2023 Veterinaria S.A.M Phantoms</p>
+                    <p>Calle Glorieta de Fuente de Petróleos 340, Evolucion, 57700 Nezahualcóyotl, Méx.</p>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="politicas.html">Política de Privacidad |</a></li>
+                    <li><a href="Dudas.html">Preguntas frecuentes | </a></li>
+                    <li><a href="mailto:veterinariasam102@gmail.com">veterinariasam102@gmail.com</a></li>
+                </ul>
+            </div>
+            <div>
+                <br>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/product-list.js"></script>
+
+    <script>
+        const queryString = window.location.search;
+        const params = new URLSearchParams(queryString);
+        // console.log(params.get('id'));
+
+        let prodDesc;
+
+        // identificar producto
+        productos.forEach((producto) => {
+            if(producto.id == params.get('id')) {
+                prodDesc = {
+                    id: producto.id,
+                    img: producto.img,
+                    nombre: producto.nombre,
+                    marca: producto.marca,
+                    precio: producto.precio,
+                    descripcion: producto.descripcion
+                };
+            }
+        });
+
+        // console.log(prodDesc);
+
+        const productDiv = document.querySelector('.producto');
+
+        const productoHTML = `
+        <div class="imagen">
+            <img src="${prodDesc.img}">
+        </div>
+        <div class="informacion">
+            <h1>${prodDesc.nombre}</h1>
+            <p>${prodDesc.descripcion}</p>
+            <p>Disponibilidad: <span class="disponible">Disponible</span></p>
+            <p>Marca:  ${prodDesc.marca}</p>
+            <p>Precio: $${prodDesc.precio}</p>
+        </div>`;
+        productDiv.insertAdjacentHTML('afterbegin', productoHTML);
+
+    </script>
+    
+
+    <script src="js/navegacion.js"></script>
+</body>
+</html>

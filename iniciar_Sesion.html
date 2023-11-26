@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="Imageneshtml/icono"">
+    <meta charset=" UTF-8" />
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+
+    <!-- Google Fonts -->
+    <link rel="icon" href="Imageneshtml/icono.png">
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="estilos/estiloSesion.css" />
+
+    <title>Formulario Login y Registro de Usuarios</title>
+</head>
+
+<body>
+    <!-- Formularios -->
+    <div class="contenedor-formularios">
+        <a href="index.html" class="logo-enlace">
+            <img src="Imageneshtml/LogoSam2 (2).png" alt="Imagen de redirección" class="logo-imagen" />
+        </a>
+        <!-- Links de los formularios -->
+        <ul class="contenedor-tabs">
+            <li class="tab tab-segunda active">
+                <a href="#iniciar-sesion">Iniciar Sesión</a>
+            </li>
+            <li class="tab tab-primera"><a href="#registrarse">Registrarse</a></li>
+        </ul>
+        <!-- Contenido de los Formularios -->
+        <div class="contenido-tab">
+            <!-- Iniciar Sesion -->
+            <div id="iniciar-sesion" style="display: none;">
+                <h1>Iniciar Sesión</h1>
+                <form action="#" method="post">
+                    <div class="contenedor-input">
+                        <label> Usuario <span class="req">*</span> </label>
+                        <input type="text" required />
+                    </div>
+
+                    <div class="contenedor-input">
+                        <label> Contraseña <span class="req">*</span> </label>
+                        <input type="password" required />
+                    </div>
+                    <p class="forgot"><a href="#">Se te olvidó la contraseña?</a></p>
+                    <input type="submit" class="button button-block" value="Iniciar Sesión" />
+                </form>
+            </div>
+        </div>
+
+        <!-- Registrarse -->
+        <div id="registrarse">
+            <h1>Registrarse</h1>
+            <form action="#" method="post" id="registroForm">
+                <div class="fila-arriba">
+                    <div class="contenedor-input">
+                        <label for="name"> Nombre <span class="req">*</span> </label>
+                        <input type="text" maxlength="20" required id="name" />
+                    </div>
+
+                    <div class="contenedor-input">
+                        <label for="last"> Apellido <span class="req">*</span> </label>
+                        <input type="text" maxlength="20" required id="last" />
+                    </div>
+                </div>
+                <div class="contenedor-input">
+                    <label> Nombre de Usuario <span class="req">*</span> </label>
+                    <input type="text" required id="usName" />
+                </div>
+                <div class="contenedor-input">
+                    <label> Email <span class="req">*</span> </label>
+                    <input type="email" required id="email" />
+                </div>
+                <div class="contenedor-input">
+                    <label for="fechaNac">
+                        Fecha de Nacimiento <span class="req">*</span>
+                    </label>
+                    <br /><br />
+                    <input type="date" required id="fechaNac" />
+                    <small id="edadError" style="color: red"></small>
+                </div>
+                <div class="contenedor-input">
+                    <label> Contraseña <span class="req">*</span> </label>
+                    <input type="password" id="password" minlength="8" required />
+                </div>
+
+                <div class="contenedor-input">
+                    <label> Repetir Contraseña <span class="req">*</span> </label>
+                    <input type="password" id="confirmPassword" minlength="8" required />
+                    <small id="passwordError" style="color: red"></small>
+                </div>
+
+                <div class="contenedor-input">
+                    <p class="leyenda">Regístrate también con tus redes</p>
+                    <button type="button" onclick="iniciarSesionGoogle()" class="button-google">
+                        <img src="Imageneshtml/google_logo.jpg" alt="Iniciar sesión con Google" />
+                    </button>
+                </div>                               
+
+                <input type="submit" class="button button-block" onclick="guardar()" value="Registrarse" />
+            </form>
+        </div>
+    </div>
+    </div>
+
+    <!-----------------         SCRIPT           ------------------------>
+
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-auth-compat.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!-- Animacion de la perra nieve -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Snowstorm/20131208/snowstorm-min.js"></script>
+    <script>
+        // Configuración de la animación de copos de nieve
+        snowStorm.flakesMax = 64;
+        snowStorm.useTwinkleEffect = true;
+
+        // Inicia la animación
+        snowStorm.start();
+    </script>
+
+    <!--  -->
+    <script>
+        $(document).ready(function () {
+            $(".contenedor-formularios")
+                .find("input, textarea")
+                .on("keyup blur focus", function (e) {
+                    var $this = $(this),
+                        label = $this.prev("label");
+
+                    if (e.type === "keyup") {
+                        if ($this.val() === "") {
+                            label.removeClass("active highlight");
+                        } else {
+                            label.addClass("active highlight");
+                        }
+                    } else if (e.type === "blur") {
+                        if ($this.val() === "") {
+                            label.removeClass("active highlight");
+                        } else {
+                            label.removeClass("highlight");
+                        }
+                    } else if (e.type === "focus") {
+                        if ($this.val() === "") {
+                            label.removeClass("highlight");
+                        } else if ($this.val() !== "") {
+                            label.addClass("highlight");
+                        }
+                    }
+                });
+
+            $(".tab a").on("click", function (e) {
+                e.preventDefault();
+
+                $(this).parent().addClass("active");
+                $(this).parent().siblings().removeClass("active");
+
+                target = $(this).attr("href");
+
+                $(".contenido-tab > div").not(target).hide();
+
+                $(target).fadeIn(600);
+            });
+        });
+    </script>
+
+    <!-- validacion de la fecha de nacimiento y contraseña  -->
+    <script>
+        document
+            .getElementById("registroForm")
+            .addEventListener("submit", function (event) {
+                // Detener el envío del formulario por defecto
+                event.preventDefault();
+
+                // Obtener la fecha de nacimiento ingresada por el usuario
+                var fechaNacimiento = new Date(
+                    document.getElementById("fechaNacimiento").value
+                );
+
+                // Obtener la fecha actual
+                var fechaActual = new Date();
+
+                // Calcular la diferencia de años
+                var edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
+
+                // Verificar si la edad es menor a 18
+                if (edad < 18) {
+                    // Mostrar un mensaje de error para la fecha de nacimiento
+                    document.getElementById("edadError").textContent =
+                        "Debes ser mayor de 18 años.";
+                } else {
+                    // Limpiar el mensaje de error para la fecha de nacimiento
+                    document.getElementById("edadError").textContent = "";
+
+                    // Obtener las contraseñas ingresadas por el usuario
+                    var password = document.getElementById("password").value;
+                    var confirmPassword =
+                        document.getElementById("confirmPassword").value;
+
+                    // Verificar si las contraseñas coinciden
+                    if (password !== confirmPassword) {
+                        // Mostrar un mensaje de error para la contraseña
+                        document.getElementById("passwordError").textContent =
+                            "Las contraseñas no coinciden.";
+                    } else {
+                        // Limpiar el mensaje de error para la contraseña
+                        document.getElementById("passwordError").textContent = "";
+
+                        // Si todo está bien, puedes enviar el formulario
+                        document.getElementById("registroForm").submit();
+
+                        // Limpiar los campos del formulario después de enviarlo
+                        document.getElementById("registroForm").reset();
+                    }
+                }
+            });
+    </script>
+
+
+    <!-- Scripts para la inicializacion de Fb y Fs  -->
+    <script src="jsDb/configuracion.js"></script>
+    <script src="jsDb/guardar.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito de Compras</title>
+  <link rel="icon" href="Imageneshtml/icono.png">
+  <link rel="stylesheet" href="estilos/carrito.css">
+  <link rel="stylesheet" href="estilos/app.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div class="container">
+        
+    <div class="one-header">
+        <script src="./js/navbar.js"></script>
+    </div>
+
+    <main class="cartcard">
+      <div class="cart-items">
+        <!-- Aquí se agregarán los elementos del carrito -->
+      </div>
+      <div class="cart-total" id="cart-total">
+        <h2>Total: <span id="total-amount">$0</span></h2>
+        <button id="checkout-btn" onclick="buySuccess();">Checkout</button>
+      </div>
+    </main>
+
+    <div id="yourEmptyCart" style="text-align: center; min-height: 250px; display: none;">
+      <i class="fa fa-shopping-cart fa-3x" style="color: #777;" aria-hidden="true"></i>
+      <p style="font-size: 2vw;">Carrito de compras vacío</p>
+      <a href="./index.html" id="checkout-btn">Ir al Inicio</a>
+    </div>
+
+  </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<footer>
+    <div class="footer-container">
+        <div class="social-media">
+            <ul>
+              <li><a href="https://www.facebook.com/profile.php?id=100095350443486"
+                target="_blank"><img src="Imageneshtml/logoFB.png" alt="Facebook"></a></li>
+        <li><a href="https://instagram.com/vet_s.a.m?igshid=MzNlNGNkZWQ4Mg=="
+                target="_blank"><img src="Imageneshtml/logoIG.png" alt="Instagram"></a></li>
+                <li><a href="https://api.whatsapp.com/send?phone=14804396072" target="_blank"><img src="Imageneshtml/logoWA.png" alt="WhatsApp"></a></li>
+
+        <p>&copy; 2023 Veterinaria S.A.M Phantoms</p>
+                <p>Calle Glorieta de Fuente de Petróleos 340, Evolucion, 57700 Nezahualcóyotl, Méx.</p>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <ul>
+                <li><a href="politicas.html">Política de Privacidad |</a></li>
+                <li><a href="Dudas.html">Preguntas frecuentes | </a></li>
+                <li><a href="mailto:veterinariasam102@gmail.com">veterinariasam102@gmail.com</a></li>
+            </ul>
+        </div>
+        <div>
+            <br>
+        </div>
+    </div>
+</footer>
+
+  <script>
+
+    function deleteItem(id) {
+      Swal.fire({
+          title: '¿Estas seguro?',
+          text: "¡Se eliminara el producto del carrito!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#f90',
+          cancelButtonColor: '#d33',
+          confirmButtonText: '¡Sí, bórralo!'
+          // dangerMode: true,
+      }).then(function(confirm) {
+          if (confirm.isConfirmed) {
+            let carrito = localStorage.getItem('shoppingCart');
+            let carritoObjeto = JSON.parse(carrito);
+
+            if (carritoObjeto !== null) {
+              // Filtrar el arreglo para excluir el elemento con el id proporcionado
+              carritoObjeto = carritoObjeto.filter((product) => product.id !== id);
+              localStorage.setItem('shoppingCart', JSON.stringify(carritoObjeto));
+              location.reload();
+            }
+          }
+      });
+    }
+
+    function emptyCart() {
+      Swal.fire({
+          title: '¿Estas seguro?',
+          text: "¡Se vaciará todo el carrito!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#f90',
+          cancelButtonColor: '#d33',
+          confirmButtonText: '¡Sí, bórralo!'
+          // dangerMode: true,
+      }).then(function(confirm) {
+          if (confirm.isConfirmed) {
+            let carrito = localStorage.removeItem('shoppingCart');
+            location.reload();
+          }
+      });
+    }
+
+    function buySuccess(){
+      Swal.fire({
+          title: '!Compra realizada con éxito!',
+          text: "",
+          icon: 'success',
+          showCancelButton: false,
+          confirmButtonColor: '#f90',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Ok'
+      }).then(function(confirm) {
+          if (confirm.isConfirmed) {
+            let carrito = localStorage.removeItem('shoppingCart');
+            location.reload();
+          }
+      });
+    }
+
+    function loadShoppingCart(){
+        
+        let carrito = localStorage.getItem('shoppingCart');
+        let carritoObjeto = JSON.parse(carrito);
+        const productCartDiv = document.querySelector('.cart-items');
+        let totalAmount = 0;
+        console.log(carritoObjeto);
+  
+        if (carritoObjeto !== null) {
+          carritoObjeto.forEach((product) => {
+
+              const productCartHTML = `
+              <div class="cart-item">
+                  <img src="${product.img}">
+                  <span class="cart-item-name">${product.nombre}</span>
+                  <span class="cart-item-price">$${product.precio} <i class="fa fa-trash btn-trash" onclick="deleteItem(${product.id});"></i></span>
+              </div>
+              `;
+              productCartDiv.insertAdjacentHTML('afterbegin', productCartHTML);
+              totalAmount += product.precio;
+
+          });
+          const totalAmountElement = document.getElementById('total-amount');
+          totalAmountElement.textContent = `$${parseFloat(totalAmount.toFixed(2))}`;
+
+          if(Object.keys(carritoObjeto).length !== 0){
+            const btnEmptyCart = `
+                <button id="empty-cart-btn" onclick="emptyCart();"><i class="fa fa-trash"></i> Vaciar carrito</button>
+              `;
+            productCartDiv.insertAdjacentHTML('beforeend', btnEmptyCart);
+          }
+        } else {
+          
+          const totalCart = document.getElementById("cart-total");
+          totalCart.style.display = "none";
+          const theyEmptyCart = document.getElementById("yourEmptyCart");
+          theyEmptyCart.style.display = "block";
+
+        }
+    }
+    loadShoppingCart();
+    
+  </script>
+
+
+
+  <script src="js/navegacion.js"></script>
+</body>
+</html>

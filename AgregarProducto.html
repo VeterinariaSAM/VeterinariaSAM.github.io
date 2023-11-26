@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veterinaria SAM</title>
+    <link rel="icon" href="Imageneshtml/icono.png">
+    <link rel="stylesheet" type="text/css" href="estilos/agregar.css">
+    <link rel="stylesheet" href="estilos/app.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="one-header">
+            <script src="./js/navbar.js"></script>
+        </div>
+
+        <div class="form-container">
+        <h1>Agregar Productos</h1>
+        <form id="productForm">
+            <label for="productName">Nombre del Producto:</label>
+            <input type="text" id="productName" required>
+
+            <label for="productBrand">Marca:</label>
+            <input type="text" id="productBrand" required>
+
+            <label for="productID">ID:</label>
+            <input type="text" id="productID" required>
+
+            <button type="button" id="addButton">Agregar</button>
+        </form>
+
+        <ul id="productList">
+            <!-- Aquí se mostrarán los productos agregados -->
+        </ul>
+    </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="social-media">
+                <ul>
+                    <li><a href="https://www.facebook.com/profile.php?id=100095350443486"
+                        target="_blank"><img src="Imageneshtml/logoFB.png" alt="Facebook"></a></li>
+                <li><a href="https://instagram.com/vet_s.a.m?igshid=MzNlNGNkZWQ4Mg=="
+                        target="_blank"><img src="Imageneshtml/logoIG.png" alt="Instagram"></a></li>
+                        <li><a href="https://api.whatsapp.com/send?phone=14804396072" target="_blank"><img src="Imageneshtml/logoWA.png" alt="WhatsApp"></a></li>
+
+                <p>&copy; 2023 Veterinaria S.A.M Phantoms</p>
+                    <p>Calle Glorieta de Fuente de Petróleos 340, Evolucion, 57700 Nezahualcóyotl, Méx.</p>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li class="footer-li"><a href="politicas.html">Política de Privacidad |</a></li>
+                    <li class="footer-li"><a href="Dudas.html">Preguntas frecuentes | </a></li>
+                    <li class="footer-li"><a href="mailto:veterinariasam102@gmail.com">veterinariasam102@gmail.com</a></li>
+                </ul>
+            </div>
+            <div>
+                <br>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const addButton = document.getElementById('addButton');
+        const productList = document.getElementById('productList');
+        const productForm = document.getElementById('productForm');
+
+        // Obtener los productos guardados en el Local Storage (si existen)
+        let products = JSON.parse(localStorage.getItem('products')) || [];
+
+        // Función para guardar los productos en el Local Storage
+        function saveProductsToLocalStorage() {
+            localStorage.setItem('products', JSON.stringify(products));
+        }
+
+        // Función para actualizar la lista con los productos
+        function updateProductList() {
+            // Limpiar la lista actual
+            productList.innerHTML = '';
+
+            // Recorrer el arreglo de productos y agregarlos a la lista
+            products.forEach((product, index) => {
+                const li = document.createElement('li');
+                li.textContent = `Nombre: ${product.name}, Marca: ${product.brand}, ID: ${product.id}`;
+                li.setAttribute('data-index', index); // Agregar un atributo con el índice del producto en el arreglo
+
+                // Crear el botón de eliminar y agregarlo al elemento li
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Eliminar';
+                deleteButton.classList.add('delete-button');
+                deleteButton.addEventListener('click', removeProduct);
+                li.appendChild(deleteButton);
+
+                productList.appendChild(li);
+            });
+        }
+
+        function removeProduct(event) {
+            const selectedLi = event.target.parentElement;
+            const selectedIndex = selectedLi.getAttribute('data-index');
+            const productName = products[selectedIndex].name;
+
+            if (confirm(`¿Estás seguro que deseas eliminar el producto ${productName}?`)) {
+                // Eliminar el producto seleccionado del arreglo
+                products.splice(selectedIndex, 1);
+
+                // Guardar los productos actualizados en el Local Storage
+                saveProductsToLocalStorage();
+
+                // Actualizar la lista con los productos restantes del arreglo
+                updateProductList();
+            }
+        }
+
+        addButton.addEventListener('click', () => {
+            const name = document.getElementById('productName').value;
+            const brand = document.getElementById('productBrand').value;
+            const id = document.getElementById('productID').value;
+
+            // Agregar el producto al arreglo
+            products.push({ name, brand, id });
+
+            // Guardar los productos en el Local Storage
+            saveProductsToLocalStorage();
+
+            // Actualizar la lista con los productos del arreglo
+            updateProductList();
+
+            // Limpiar el formulario después de agregar el producto
+            productForm.reset();
+        });
+
+        // Actualizar la lista con los productos al cargar la página
+        updateProductList();
+    </script>
+
+
+    <!-- este alch igual no se de que sea, ya estaba cuando llegue jajaja 💀-->
+    <script>
+        let mostrador = document.getElementById("mostrador");
+        let seleccion = document.getElementById("seleccion");
+        let imgSeleccionada = document.getElementById("img");
+        let modeloSeleccionado = document.getElementById("modelo");
+        let descripSeleccionada = document.getElementById("descripcion");
+        let precioSeleccionado = document.getElementById("precio");
+        let descuentoSeleccionado = document.getElementById("descuento");
+
+        function cargar(item) {
+            quitarBordes();
+            mostrador.style.width = "60%";
+            seleccion.style.width = "40%";
+            seleccion.style.opacity = "1";
+            item.style.border = "2px solid red";
+
+            imgSeleccionada.src = item.getElementsByTagName("img")[0].src;
+
+            modeloSeleccionado.innerHTML = item.getElementsByTagName("p")[0].innerHTML;
+
+            descripSeleccionada.innerHTML = "Descripción del Poducto ";
+
+            precioSeleccionado.innerHTML = item.getElementsByTagName("span")[0].innerHTML;
+
+
+        }
+        function cerrar() {
+            mostrador.style.width = "100%";
+            seleccion.style.width = "0%";
+            seleccion.style.opacity = "0";
+            quitarBordes();
+        }
+        function quitarBordes() {
+            var items = document.getElementsByClassName("item");
+            for (i = 0; i < items.length; i++) {
+                items[i].style.border = "none";
+            }
+        }
+    </script>
+
+
+    <!-- este we se encarga de que el header se minimice al bajar o navegar en la pagina-->
+    <script>
+        window.addEventListener('scroll', function () {
+            var header = document.querySelector('.scroll-header');
+            if (window.scrollY > 100) {
+                header.classList.add('small');
+            } else {
+                header.classList.remove('small');
+            }
+        });
+
+    </script>
+<!--este es pa cuando se haga clic fuera del banner, este se cierre auto -->
+<script>
+    document.addEventListener('click', function (event) {
+        var sidebar = document.querySelector('.sidebar');
+        var targetElement = event.target;
+
+        if (!sidebar.contains(targetElement) && targetElement.id !== 'toggleSidebar') {
+            sidebar.classList.remove('open');
+        }
+    });
+
+</script>
+
+<script>
+    (() => {
+        function documentReady() {
+          const miElemento = document.getElementById('nombreDeUsuario');
+          miElemento.textContent = localStorage.getItem("nombre");
+          console.log(localStorage.getItem("nombre"));
+        }
+        document.addEventListener('DOMContentLoaded', documentReady);
+      })();
+
+</script>
+
+
+
+<script src="js/navegacion.js"></script>
+</body>
+</html>

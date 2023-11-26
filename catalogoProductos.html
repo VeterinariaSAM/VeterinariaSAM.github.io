@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<meta charset="UTF-8">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veterinaria SAM</title>
+    <link rel="icon" href="Imageneshtml/icono.png">
+    <link rel="stylesheet" href="estilos/app.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="one-header">
+            <script src="./js/navbar.js"></script>
+        </div>
+
+        <div class="container">
+            <section class="info-section">
+                <div class="info-box">
+                    <img src="Imageneshtml/seguridad.png" alt="Compras Seguras">
+                    <h4>Compras Seguras</h4>
+                    <p>En Veterinaria S.A.M, nos comprometemos a brindarte una experiencia de compra segura y confiable.
+                        Nuestra tienda en línea cuenta con medidas de seguridad avanzadas para proteger tus datos
+                        personales y financieros.</p>
+                </div>
+                <div class="info-box">
+                    <img src="Imageneshtml/horario.png" alt="Horarios">
+                    <h4>Horarios</h4>
+                    <p>Horario de atención al cliente:</p>
+                    <ul>
+                        <li>Lunes a Viernes: 9:00 AM - 6:00 PM</li>
+                        <li>Sábados: 10:00 AM - 2:00 PM</li>
+                        <li>Domingos: Cerrado</li>
+                    </ul>
+                </div>
+                <div class="info-box">
+                    <img src="Imageneshtml/envio.png" alt="Envío a Domicilio">
+                    <h4>Envío a Domicilio</h4>
+                    <p>Realizamos envíos a domicilio para tu comodidad. Consulta nuestras tarifas y disponibilidad en tu
+                        área.</p>
+                </div>
+                <div class="info-box">
+                    <img src="Imageneshtml/contra_entrega.png" alt="Contra Entrega">
+                    <h4>Contra Entrega</h4>
+                    <p>Aceptamos pago contra entrega en efectivo. Disponible en ciertas zonas.</p>
+                </div>
+            </section>
+        </div>
+
+
+        <main>
+            <section class="catalog">
+                <!-- <div class="product">
+                    <div class="product-image">
+                        <img src="Imageneshtml/logoWA.png" alt="Producto 1">
+                    </div>
+                    <div class="product-info">
+                        <h3>collar para perro</h3>
+                      <a href="testing.html">info</a>
+                        <p class="product-price">Precio: $150</p>
+                        <p>collar para perro raza pequeña</p>
+                        <div class="product-controls">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1">
+                            <button class="quantity-btn plus">+</button>
+                            <div class="add-to-cart-container">
+                                <div class="add-to-cart-btn">Agregar al carrito</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </section>
+        </main>
+
+        <div class="slideshow-container">
+            <div class="slide">
+                <img src="Imageneshtml/banner1.jpg" alt="Imagen 1">
+            </div>
+            <div class="slide">
+                <img src="Imageneshtml/banner2.png" alt="Imagen 2">
+            </div>
+            <div class="slide">
+                <img src="Imageneshtml/banner3.png" alt="Imagen 3">
+            </div>
+            <div class="slide">
+                <img src="Imageneshtml/banner4.jpg" alt="Imagen 3">
+            </div>
+            <div class="slide">
+                <img src="Imageneshtml/banner5.jpg" alt="Imagen 3">
+            </div>
+        </div>
+
+
+
+        <div class="whatsapp-icon">
+            <a href="https://api.whatsapp.com/send?phone=14804396072" target="_blank">
+                <img src="Imageneshtml/Whatsapplogo.png" alt="WhatsApp">
+                <span class="whatsapp-message">Escríbenos😋</span>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="social-media">
+                <ul>
+                    <li><a href="https://www.facebook.com/profile.php?id=100095350443486"
+                        target="_blank"><img src="Imageneshtml/logoFB.png" alt="Facebook"></a></li>
+                <li><a href="https://instagram.com/vet_s.a.m?igshid=MzNlNGNkZWQ4Mg=="
+                        target="_blank"><img src="Imageneshtml/logoIG.png" alt="Instagram"></a></li>
+                        <li><a href="https://api.whatsapp.com/send?phone=14804396072" target="_blank"><img src="Imageneshtml/logoWA.png" alt="WhatsApp"></a></li>
+
+                <p>&copy; 2023 Veterinaria S.A.M Phantoms</p>
+                    <p>Calle Glorieta de Fuente de Petróleos 340, Evolucion, 57700 Nezahualcóyotl, Méx.</p>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="politicas.html">Política de Privacidad |</a></li>
+                    <li><a href="Dudas.html">Preguntas frecuentes | </a></li>
+                    <li><a href="mailto:veterinariasam102@gmail.com">veterinariasam102@gmail.com</a></li>
+                </ul>
+            </div>
+            <div>
+                <br>
+            </div>
+        </div>
+    </footer>
+
+
+
+<!-- este es el script del banner-->
+<script>
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    function showSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+
+    setInterval(showSlide, 2500);
+
+</script>
+
+
+<script src="./js/product-list.js"></script>
+
+<script>
+// Recorrer el arreglo de productos utilizando forEach()
+const catalogDiv = document.querySelector('.catalog');
+
+productos.forEach((producto) => {
+  
+  let prod = `<div class="product">
+                    <div class="product-image">
+                        <img src="${producto.img}" alt="${producto.nombre}">
+                    </div>
+                    <div class="product-info">
+                        <h3>${producto.nombre}</h3>
+                        <a href="producto.html?id=${producto.id}">info</a>
+                        <p class="product-price">Precio: $${producto.precio}</p>
+                        <p>${producto.descripcion}</p>
+                        <div class="product-controls">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1">
+                            <button class="quantity-btn plus">+</button>
+                            <div class="add-to-cart-container">
+                                <div class="add-to-cart-btn" onclick="addToCart(${producto.id})">Agregar al carrito</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+
+    catalogDiv.insertAdjacentHTML("beforeend", prod);
+
+});
+</script>
+
+
+<!--el contador -->
+<script>
+    // Obtener los elementos necesarios
+    const quantityInputs = document.querySelectorAll(".quantity-input");
+    const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+    const cartCounter = document.querySelector(".cart-counter");
+
+    // Función para actualizar el contador general del carrito
+    function updateCartCounter() {
+        let totalItems = 0;
+        quantityInputs.forEach(input => {
+            totalItems += parseInt(input.value);
+        });
+        cartCounter.textContent = totalItems;
+    }
+
+    // Evento para el botón "Agregar al carrito"
+    addToCartButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            // Obtener el input de cantidad del producto actual
+            const quantityInput = button.parentElement.querySelector(".quantity-input");
+            // Obtener la cantidad actual de productos en el carrito
+            let currentCartItems = parseInt(cartCounter.textContent);
+            // Agregar la cantidad del producto actual al carrito
+            currentCartItems += parseInt(quantityInput.value);
+            // Actualizar el contador general del carrito
+            cartCounter.textContent = currentCartItems;
+        });
+    });
+
+    // Eventos para los botones "+" y "-"
+    quantityInputs.forEach(input => {
+        input.addEventListener("change", () => {
+            // Verificar que la cantidad no sea menor a 1
+            if (input.value < 1) {
+                input.value = 1;
+            }
+            // Actualizar el contador general del carrito
+            updateCartCounter();
+        });
+
+        const minusBtn = input.parentElement.querySelector(".minus");
+        minusBtn.addEventListener("click", () => {
+            // Reducir la cantidad en 1
+            if (input.value > 1) {
+                input.value--;
+            }
+            // Actualizar el contador general del carrito
+            updateCartCounter();
+        });
+
+        const plusBtn = input.parentElement.querySelector(".plus");
+        plusBtn.addEventListener("click", () => {
+            // Incrementar la cantidad en 1
+            input.value++;
+            // Actualizar el contador general del carrito
+            updateCartCounter();
+        });
+    });
+
+
+    function addToCart(id){
+        
+        
+        let carrito = localStorage.getItem('shoppingCart');
+        let producTemp;
+
+        // identificar producto
+        productos.forEach((producto) => {
+            if(producto.id == id) {
+                producTemp = {
+                    id: producto.id,
+                    img: producto.img,
+                    nombre: producto.nombre,
+                    marca: producto.marca,
+                    precio: producto.precio,
+                    descripcion: producto.descripcion
+                };
+            }
+        });
+        
+        if (carrito !== null) {
+            productosObjeto = JSON.parse(carrito);
+            productosObjeto.push(producTemp);
+            console.log( productosObjeto );
+            localStorage.setItem("shoppingCart", JSON.stringify(productosObjeto));
+        } else {
+            let productosObjeto = [];
+            productosObjeto.push(producTemp);
+            console.log( productosObjeto )
+            localStorage.setItem("shoppingCart", JSON.stringify(productosObjeto));
+        }
+        location.reload();
+
+    }
+
+</script>
+
+
+
+
+<script src="js/navegacion.js"></script>
+
+
+</body>
+
+</html>

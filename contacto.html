@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<meta charset="UTF-8">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veterinaria SAM</title>
+    <link rel="icon" href="Imageneshtml/icono.png">
+    <link rel="stylesheet" href="estilos/estiloContacto.css">
+    <link rel="stylesheet" href="estilos/app.css">
+</head>
+
+<body>
+
+    <div class="container">
+        
+        <div class="one-header">
+            <script src="./js/navbar.js"></script>
+        </div>
+        
+        <section class="contact">
+            <h2>Contactanos</h2>
+        
+            <div class="contact-info">
+                <h3>Información de contacto</h3>
+                <p>¡Gracias por tu interés en nuestra veterinaria! Aquí tienes la información de contacto:</p>
+                <p>Dirección: Calle Miguel Alamen NO.46, Edo Mex, Mexico</p>
+                <p>Teléfono: "+1 480-439-6072"</p>
+                <p>Correo electrónico: veterinariaphan@gmail.com</p>
+        
+                <h3>Horario de atención</h3>
+                <p>Lunes a Viernes: 8:00 AM - 7:00 PM</p>
+                <p>Sábados: 9:00 AM - 5:00 PM</p>
+                <p>Domingos: Cerrado</p>
+            </div>
+        
+            <div class="social-links">
+                <h3>Redes Sociales</h3>
+                <p>Síguenos en nuestras redes sociales para estar al tanto de nuestras novedades:</p>
+                <ul class="social-icons">
+                    <li><a href="https://www.facebook.com/profile.php?id=100095350443486"
+                        target="_blank"><img src="Imageneshtml/logoFB.png" alt="Facebook"></a></li>
+                            <li><a href="https://instagram.com/vet_s.a.m?igshid=MzNlNGNkZWQ4Mg=="
+                                target="_blank"><img src="Imageneshtml/logoIG.png" alt="Instagram"></a></li>
+                            <li><a href="https://api.whatsapp.com/send?phone=14804396072" target="_blank"><img src="Imageneshtml/logoWA.png" alt="WhatsApp"></a></li>
+                </ul>
+            </div>
+        
+            <div class="complaints">
+                <h3>Quejas y recomendaciones</h3>
+                <p>Si tienes alguna queja o recomendación que nos quieras compartir, por favor utiliza el siguiente formulario:</p>
+                <form>
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" name="name" required>
+        
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+        
+                    <label for="message">Mensaje:</label>
+                    <textarea id="message" name="message" required></textarea>
+        
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </section>
+        
+
+        <div class="whatsapp-icon">
+            <a href="https://api.whatsapp.com/send?phone=14804396072" target="_blank">
+                <img src="Imageneshtml/Whatsapplogo.png" alt="WhatsApp">
+                <span class="whatsapp-message">Escríbenos😋</span>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="social-media">
+                <ul>
+                    <li><a href="https://www.facebook.com/profile.php?id=100095350443486"
+                        target="_blank"><img src="Imageneshtml/logoFB.png" alt="Facebook"></a></li>
+                <li><a href="https://instagram.com/vet_s.a.m?igshid=MzNlNGNkZWQ4Mg=="
+                        target="_blank"><img src="Imageneshtml/logoIG.png" alt="Instagram"></a></li>
+                        <li><a href="https://api.whatsapp.com/send?phone=14804396072" target="_blank"><img src="Imageneshtml/logoWA.png" alt="WhatsApp"></a></li>
+
+                <p>&copy; 2023 Veterinaria S.A.M Phantoms</p>
+                    <p>Calle Glorieta de Fuente de Petróleos 340, Evolucion, 57700 Nezahualcóyotl, Méx.</p>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="politicas.html">Política de Privacidad |</a></li>
+                    <li><a href="Dudas.html">Preguntas frecuentes | </a></li>
+                    <li><a href="mailto:veterinariasam102@gmail.com">veterinariasam102@gmail.com</a></li>
+                </ul>
+            </div>
+            <div>
+                <br>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- script que hace la chamba de desaparecer el perro icono de whats que esta en la derecha inferior-->
+    <script>
+        // Obtener el elemento del ícono de WhatsApp
+        const whatsappIcon = document.querySelector('.whatsapp-icon');
+
+        // Función para verificar la posición del scroll y ocultar el ícono cuando se llega al final
+        function hideWhatsAppIcon() {
+            const scrollPosition = window.scrollY || window.pageYOffset;
+            const windowHeight = window.innerHeight;
+            const documentHeight = Math.max(
+                document.body.scrollHeight,
+                document.documentElement.scrollHeight,
+                document.body.offsetHeight,
+                document.documentElement.offsetHeight,
+                document.body.clientHeight,
+                document.documentElement.clientHeight
+            );
+
+            if (scrollPosition + windowHeight >= documentHeight - 100) {
+                whatsappIcon.style.display = 'none';
+            } else {
+                whatsappIcon.style.display = 'block';
+            }
+        }
+
+        // Ejecutar la función al cargar la página y al hacer scroll
+        window.addEventListener('DOMContentLoaded', hideWhatsAppIcon);
+        window.addEventListener('scroll', hideWhatsAppIcon);
+    </script>
+
+
+    <!--el contador -->
+    <script>
+        // Obtener los elementos necesarios
+        const quantityInputs = document.querySelectorAll(".quantity-input");
+        const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+        const cartCounter = document.querySelector(".cart-counter");
+
+        // Función para actualizar el contador general del carrito
+        function updateCartCounter() {
+            let totalItems = 0;
+            quantityInputs.forEach(input => {
+                totalItems += parseInt(input.value);
+            });
+            cartCounter.textContent = totalItems;
+        }
+
+        // Evento para el botón "Agregar al carrito"
+        addToCartButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                // Obtener el input de cantidad del producto actual
+                const quantityInput = button.parentElement.querySelector(".quantity-input");
+                // Obtener la cantidad actual de productos en el carrito
+                let currentCartItems = parseInt(cartCounter.textContent);
+                // Agregar la cantidad del producto actual al carrito
+                currentCartItems += parseInt(quantityInput.value);
+                // Actualizar el contador general del carrito
+                cartCounter.textContent = currentCartItems;
+            });
+        });
+
+        // Eventos para los botones "+" y "-"
+        quantityInputs.forEach(input => {
+            input.addEventListener("change", () => {
+                // Verificar que la cantidad no sea menor a 1
+                if (input.value < 1) {
+                    input.value = 1;
+                }
+                // Actualizar el contador general del carrito
+                updateCartCounter();
+            });
+
+            const minusBtn = input.parentElement.querySelector(".minus");
+            minusBtn.addEventListener("click", () => {
+                // Reducir la cantidad en 1
+                if (input.value > 1) {
+                    input.value--;
+                }
+                // Actualizar el contador general del carrito
+                updateCartCounter();
+            });
+
+            const plusBtn = input.parentElement.querySelector(".plus");
+            plusBtn.addEventListener("click", () => {
+                // Incrementar la cantidad en 1
+                input.value++;
+                // Actualizar el contador general del carrito
+                updateCartCounter();
+            });
+        });
+    </script>
+
+
+    <script src="js/navegacion.js"></script>
+
+</body>
+
+</html>

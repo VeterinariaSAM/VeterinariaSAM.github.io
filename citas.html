@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<meta charset="UTF-8">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veterinaria SAM</title>
+    <link rel="icon" href="Imageneshtml/icono.png">
+    <link rel="stylesheet" href="estilos/estiloAgenda.css">
+    <link rel="stylesheet" href="estilos/app.css">
+</head>
+
+<body>
+
+    <div class="container">
+        
+        <div class="one-header">
+            <script src="./js/navbar.js"></script>
+        </div>
+
+           <div class="container">
+            <h1>Agendar Cita</h1>
+            <div class="image-container">
+                <img src="Imageneshtml/LogoSAM.png" alt="Veterinaria">
+            </div>
+            <form action="#" method="post" class="appointment-form">
+                <!-- Datos generales del propietario -->
+                <label for="nombre">Nombre del propietario:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" required>
+
+                <label for="correo">Correo electrónico:</label>
+                <input type="email" id="correo" name="correo" required>
+
+                <!-- Detalles de la mascota -->
+                <label for="nombreMascota">Nombre de la mascota:</label>
+                <input type="text" id="nombreMascota" name="nombreMascota" required>
+
+                <label for="tipoMascota">Tipo de mascota:</label>
+                <select id="tipoMascota" name="tipoMascota" required>
+                    <option value="" disabled selected>Seleccione una opción</option>
+                    <option value="Perro">Perro</option>
+                    <option value="Gato">Gato</option>
+                    <option value="Otro">Otro</option>
+                </select>
+
+                <label for="edadMascota">Edad de la mascota:</label>
+                <input type="number" id="edadMascota" name="edadMascota" required>
+
+                <!-- Tipo de cita -->
+                <label for="tipoCita">Tipo de cita:</label>
+                <input type="radio" id="citaMedica" name="tipoCita" value="Cita Médica" required>
+                <label for="citaMedica">Cita Médica</label>
+                <input type="radio" id="citaEstetica" name="tipoCita" value="Cita Estética" required>
+                <label for="citaEstetica">Cita Estética</label>
+
+                <!-- Fecha y hora de la cita -->
+                <label for="fechaCita">Fecha de la cita:</label>
+                <input type="date" id="fechaCita" name="fechaCita" required>
+
+                <label for="horaCita">Hora de la cita:</label>
+                <input type="time" id="horaCita" name="horaCita" min="08:00" max="19:00" required>
+
+                <!-- Otros datos extras -->
+                <label for="comentarios">Comentarios adicionales:</label>
+                <textarea id="comentarios" name="comentarios" rows="4" cols="50"></textarea>
+
+                <input type="submit" value="Agendar Cita">
+            </form>
+        </div>
+        
+
+
+        <style>
+            /* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+}
+
+.container {
+    width: 100%; /* Ocupa todo el ancho de la página */
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center;
+    min-height: 100vh; /* Para asegurarse de que el formulario esté centrado verticalmente */
+    padding: 20px;
+}
+
+/* Estilos del formulario */
+.image-container img {
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.appointment-form {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    max-width: 600px; /* Limita el ancho máximo del formulario */
+    background-color: #fff;
+    padding: 30px; /* Aumenté el padding para un aspecto más espaciado */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+    transition: border-color 0.3s ease; /* Agregué una transición suave al borde */
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Animación al hacer clic en los campos */
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px #007bff;
+    outline: none;
+}
+
+        </style>
+
+
+
+
+
+
+        <div class="whatsapp-icon">
+            <a href="https://api.whatsapp.com/send?phone=19722004464" target="_blank">
+                <img src="Imageneshtml/Whatsapplogo.png" alt="WhatsApp">
+                <span class="whatsapp-message">Escríbenos😋</span>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="social-media">
+                <ul>
+                    <li><a href="https://www.facebook.com/profile.php?id=100095350443486"
+                        target="_blank"><img src="Imageneshtml/logoFB.png" alt="Facebook"></a></li>
+                <li><a href="https://instagram.com/vet_s.a.m?igshid=MzNlNGNkZWQ4Mg=="
+                        target="_blank"><img src="Imageneshtml/logoIG.png" alt="Instagram"></a></li>
+                        <li><a href="https://api.whatsapp.com/send?phone=19722004464" target="_blank"><img src="Imageneshtml/logoWA.png" alt="WhatsApp"></a></li>
+
+                <p>&copy; 2023 Veterinaria S.A.M Phantoms</p>
+                    <p>Calle Glorieta de Fuente de Petróleos 340, Evolucion, 57700 Nezahualcóyotl, Méx.</p>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="politicas.html">Política de Privacidad |</a></li>
+                    <li><a href="Dudas.html">Preguntas frecuentes | </a></li>
+                    <li><a href="mailto:veterinariasam102@gmail.com">veterinariasam102@gmail.com</a></li>
+                </ul>
+            </div>
+            <div>
+                <br>
+            </div>
+        </div>
+    </footer>
+
+    <!-- script que hace la chamba de desaparecer el perro icono de whats que esta en la derecha inferior-->
+    <script>
+        // Obtener el elemento del ícono de WhatsApp
+        const whatsappIcon = document.querySelector('.whatsapp-icon');
+
+        // Función para verificar la posición del scroll y ocultar el ícono cuando se llega al final
+        function hideWhatsAppIcon() {
+            const scrollPosition = window.scrollY || window.pageYOffset;
+            const windowHeight = window.innerHeight;
+            const documentHeight = Math.max(
+                document.body.scrollHeight,
+                document.documentElement.scrollHeight,
+                document.body.offsetHeight,
+                document.documentElement.offsetHeight,
+                document.body.clientHeight,
+                document.documentElement.clientHeight
+            );
+
+            if (scrollPosition + windowHeight >= documentHeight - 100) {
+                whatsappIcon.style.display = 'none';
+            } else {
+                whatsappIcon.style.display = 'block';
+            }
+        }
+
+        // Ejecutar la función al cargar la página y al hacer scroll
+        window.addEventListener('DOMContentLoaded', hideWhatsAppIcon);
+        window.addEventListener('scroll', hideWhatsAppIcon);
+    </script>
+
+
+    <!--el contador -->
+    <script>
+        // Obtener los elementos necesarios
+        const quantityInputs = document.querySelectorAll(".quantity-input");
+        const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+        const cartCounter = document.querySelector(".cart-counter");
+
+        // Función para actualizar el contador general del carrito
+        function updateCartCounter() {
+            let totalItems = 0;
+            quantityInputs.forEach(input => {
+                totalItems += parseInt(input.value);
+            });
+            cartCounter.textContent = totalItems;
+        }
+
+        // Evento para el botón "Agregar al carrito"
+        addToCartButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                // Obtener el input de cantidad del producto actual
+                const quantityInput = button.parentElement.querySelector(".quantity-input");
+                // Obtener la cantidad actual de productos en el carrito
+                let currentCartItems = parseInt(cartCounter.textContent);
+                // Agregar la cantidad del producto actual al carrito
+                currentCartItems += parseInt(quantityInput.value);
+                // Actualizar el contador general del carrito
+                cartCounter.textContent = currentCartItems;
+            });
+        });
+
+        // Eventos para los botones "+" y "-"
+        quantityInputs.forEach(input => {
+            input.addEventListener("change", () => {
+                // Verificar que la cantidad no sea menor a 1
+                if (input.value < 1) {
+                    input.value = 1;
+                }
+                // Actualizar el contador general del carrito
+                updateCartCounter();
+            });
+
+            const minusBtn = input.parentElement.querySelector(".minus");
+            minusBtn.addEventListener("click", () => {
+                // Reducir la cantidad en 1
+                if (input.value > 1) {
+                    input.value--;
+                }
+                // Actualizar el contador general del carrito
+                updateCartCounter();
+            });
+
+            const plusBtn = input.parentElement.querySelector(".plus");
+            plusBtn.addEventListener("click", () => {
+                // Incrementar la cantidad en 1
+                input.value++;
+                // Actualizar el contador general del carrito
+                updateCartCounter();
+            });
+        });
+    </script>
+
+
+
+    <script src="js/navegacion.js"></script>
+</body>
+
+</html>
