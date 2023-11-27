@@ -24,6 +24,13 @@ function guardar() {
         return;
     }
 
+    // Validar contraseñas coincidentes
+    if (contraseña !== confirmPassword) {
+        alert("Las contraseñas no coinciden");
+        return;
+    }
+
+    // Continuar con el registro si todas las validaciones son exitosas
     db.collection("usuarios").add({
         nombre: nombre,
         apellido: apellido,
@@ -32,31 +39,30 @@ function guardar() {
         fecha_nac: fecha_nac,
         contraseña: contraseña
     })
-        .then((docRef) => {
-            // Mostrar un mensaje de éxito con SweetAlert
-            Swal.fire({
-                title: 'Registro exitoso',
-                text: 'Tu registro se ha completado correctamente',
-                icon: 'success',
-                timer: 2000,
-                showConfirmButton: false
-            }).then(() => {
-                // Ocultar el formulario de registro
-                document.getElementById("registrarse").style.display = "none";
-                // Mostrar el formulario de inicio de sesión
-                document.getElementById("iniciar-sesion").style.display = "block";
-            });
-        })
-        .catch((error) => {
-            // Mostrar un mensaje de error genérico con SweetAlert
-            Swal.fire({
-                title: 'Error',
-                text: 'Hubo un problema al registrar tus datos. Por favor, inténtalo de nuevo.',
-                icon: 'error',
-            });
+    .then((docRef) => {
+        // Mostrar un mensaje de éxito con SweetAlert
+        Swal.fire({
+            title: 'Registro exitoso',
+            text: 'Tu registro se ha completado correctamente',
+            icon: 'success',
+            timer: 2000,
+            showConfirmButton: false
+        }).then(() => {
+            // Ocultar el formulario de registro
+            document.getElementById("registrarse").style.display = "none";
+            // Mostrar el formulario de inicio de sesión
+            document.getElementById("iniciar-sesion").style.display = "block";
         });
+    })
+    .catch((error) => {
+        // Mostrar un mensaje de error genérico con SweetAlert
+        Swal.fire({
+            title: 'Error',
+            text: 'Hubo un problema al registrar tus datos. Por favor, inténtalo de nuevo.',
+            icon: 'error',
+        });
+    });
 }
-
 
 function iniciarSesionGoogle() {
     var provider = new firebase.auth.GoogleAuthProvider();
