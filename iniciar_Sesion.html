@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="icon" href="Imageneshtml/icono"">
+    <link rel="icon" href="Imageneshtml/icono.png">
     <meta charset=" UTF-8" />
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
@@ -11,12 +11,15 @@
     <link rel="icon" href="Imageneshtml/icono.png">
     <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="jsDb/admin.js"></script>
+
 
 
     <!-- Estilos -->
     <link rel="stylesheet" href="estilos/estiloSesion.css" />
 
     <title>Formulario Login y Registro de Usuarios</title>
+    
 </head>
 
 <body>
@@ -27,32 +30,32 @@
         </a>
         <!-- Links de los formularios -->
         <ul class="contenedor-tabs">
-            <li class="tab tab-segunda active">
+            <li class="tab tab-segunda">
                 <a href="#iniciar-sesion">Iniciar Sesión</a>
             </li>
-            <li class="tab tab-primera"><a href="#registrarse">Registrarse</a></li>
+            <li class="tab tab-primera active">
+                <a href="#registrarse">Registrarse</a>
+            </li>
         </ul>
         <!-- Contenido de los Formularios -->
         <div class="contenido-tab">
             <!-- Iniciar Sesion -->
             <div id="iniciar-sesion" style="display: none;">
                 <h1>Iniciar Sesión</h1>
-                <form action="#" method="post">
+                <form action="#" method="post" onsubmit="return validarAdministrador()">
                     <div class="contenedor-input">
-                        <label> Usuario <span class="req">*</span> </label>
-                        <input type="text" required />
+                        <label for="correoInicioSesion"> Correo <span class="req">*</span> </label>
+                        <input type="email" id="correoInicioSesion" required />
                     </div>
-
+            
                     <div class="contenedor-input">
-                        <label> Contraseña <span class="req">*</span> </label>
-                        <input type="password" required />
+                        <label for="passwordInicioSesion"> Contraseña <span class="req">*</span> </label>
+                        <input type="password" id="passwordInicioSesion" required />
                     </div>
                     <p class="forgot"><a href="#">Se te olvidó la contraseña?</a></p>
                     <input type="submit" class="button button-block" value="Iniciar Sesión" />
                 </form>
             </div>
-        </div>
-
         <!-- Registrarse -->
         <div id="registrarse">
             <h1>Registrarse</h1>
@@ -96,16 +99,16 @@
                 </div>
 
                 <div class="contenedor-input">
-                    <p class="leyenda">Regístrate también con tus redes</p>
+                    <p class="leyenda">Regístrate también con alguna de tus redes.</p>
                     <button type="button" onclick="iniciarSesionGoogle()" class="button-google">
                         <img src="Imageneshtml/google_logo.jpg" alt="Iniciar sesión con Google" />
                     </button>
-                </div>                               
+                </div>
 
                 <input type="submit" class="button button-block" onclick="guardar()" value="Registrarse" />
             </form>
         </div>
-    </div>
+        </div>
     </div>
 
     <!-----------------         SCRIPT           ------------------------>
@@ -128,7 +131,7 @@
         snowStorm.start();
     </script>
 
-    <!--  -->
+    <!-- formulario -->
     <script>
         $(document).ready(function () {
             $(".contenedor-formularios")
@@ -171,6 +174,13 @@
                 $(target).fadeIn(600);
             });
         });
+    </script>
+    <script>
+        // Oculta el formulario de inicio de sesión al cargar la página
+        $(document).ready(function () {
+            $("#iniciar-sesion").hide();
+        });
+
     </script>
 
     <!-- validacion de la fecha de nacimiento y contraseña  -->

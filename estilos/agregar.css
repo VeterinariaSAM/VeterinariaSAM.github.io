@@ -456,3 +456,24 @@ input {
   max-width: 400px; /* Ajusta el tamaño máximo del formulario */
   margin-bottom: 20px;
 }
+
+.product-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.product-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+}
+
+.product-item img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}

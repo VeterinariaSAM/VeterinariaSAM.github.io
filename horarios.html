@@ -6,6 +6,41 @@
     <title>Veterinaria SAM</title>
     <link rel="icon" href="Imageneshtml/icono.png">
     <link rel="stylesheet" type="text/css" href="estilos/agregar.css">
+    <script src="jsDb/admin.js"></script>
+    <style>
+        .menu-icon {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px;
+            background-color: rgb(136, 6, 6); /* Color de fondo */
+            border-radius: 5px;
+            transition: background-color 0.3s ease; /* Transición de color de fondo */
+        }
+    
+        .menu-icon:hover {
+            background-color: #e0e0e0; /* Cambio de color al pasar el ratón */
+        }
+    
+        #nombreDeUsuario {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+    
+        .boton-cerrar-sesion {
+            background-color: #d9534f; /* Color de fondo del botón */
+            color: #fff; /* Color del texto del botón */
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Transición de color de fondo */
+        }
+    
+        .boton-cerrar-sesion:hover {
+            background-color: #c9302c; /* Cambio de color al pasar el ratón */
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -15,20 +50,23 @@
                     <button id="toggleSidebar">☰</button>
                     <div class="header-logo">
                         <a href="index.html">
-                            <img src="Imageneshtml/LogoSAM2.png" alt="Logo">
+                            <img src="Imageneshtml/LogoSam2 (2).png" alt="Logo">
                         </a>
                     </div>
                 </div>
                 <div class="menu-icon" onclick="toggleMenu()">
+                    <span id="userStatus"></span>
+                    <span id="nombreDeUsuario">Admin</span>
+                    <button onclick="cerrarSesion()" class="boton-cerrar-sesion">Cerrar Sesión</button>
+                </div>
+               
+                <div class="menu-icons" onclick="toggleMenu()">
                     <a href="iniciar_Sesion.html" class="header-button">
+                        <span id="userStatus"></span>
                         <span id="nombreDeUsuario"></span>
                         <img src="Imageneshtml/usuario.png" alt="Usuario">
                     </a>
                 </div>
-               
-                <a href="carrito.html" class="header-button">
-                    <img src="Imageneshtml/carritoo.png" alt="Carrito">
-                </a>
             </header>
 
             <ul id="nav-options">
@@ -266,12 +304,18 @@ document.addEventListener('click', function (event) {
 <script>
 (() => {
     function documentReady() {
-      const miElemento = document.getElementById('nombreDeUsuario');
-      miElemento.textContent = localStorage.getItem("nombre");
-      console.log(localStorage.getItem("nombre"));
+        const miElemento = document.getElementById('nombreDeUsuarioMenu');
+        const nombreGuardado = localStorage.getItem("nombre");
+
+        if (nombreGuardado) {
+            miElemento.textContent = nombreGuardado;
+        }
+        console.log(nombreGuardado);
     }
+
     document.addEventListener('DOMContentLoaded', documentReady);
-  })();
+})();
+
 
 </script>
 

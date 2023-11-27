@@ -215,11 +215,19 @@ input:focus {
 
 /* Estilos para el botón de Google */
 .button-google {
-  background-color: transparent;
-  border: none;
-  padding: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
   cursor: pointer;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.button-google:hover {
+  background-color: #f8f8f8;
 }
 
 /* Estilos para la imagen dentro del botón de Google */
@@ -228,6 +236,7 @@ input:focus {
   width: 40px;
   height: 40px;
   object-fit: cover;
+  margin-right: 10px;
 }
 
 /* Estilos para la leyenda encima del botón */
@@ -236,6 +245,39 @@ input:focus {
   margin-bottom: 10px;
   font-size: 14px;
   position: relative;
-  color: #fff;
-  z-index: 2; /* Asegura que esté encima del botón */
+  color: #fdfdfd;
 }
+
+
+@keyframes successAnimation {
+  0% {
+      background-color: transparent;
+  }
+  50% {
+      background-color: #00ff00;
+  }
+  100% {
+      background-color: transparent;
+  }
+}
+
+@keyframes errorAnimation {
+  0% {
+      background-color: transparent;
+  }
+  50% {
+      background-color: #ff0000;
+  }
+  100% {
+      background-color: transparent;
+  }
+}
+
+.success {
+  background-color: #00ff00;
+}
+
+.error {
+  background-color: #ff0000;
+}
+

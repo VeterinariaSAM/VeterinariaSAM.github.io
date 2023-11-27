@@ -64,6 +64,48 @@ function guardar() {
     });
 }
 
+function iniciarSesion() {
+    var email = document.getElementById("emailInicioSesion").value;
+    var password = document.getElementById("passwordInicioSesion").value;
+
+    // Realizar la autenticación con Firebase
+    auth.signInWithEmailAndPassword(email, password)
+        .then(function (userCredential) {
+            // Verificar el rol del usuario
+            var user = userCredential.user;
+            checkUserRole(user.uid);
+        })
+        .catch(function (error) {
+            // Manejar errores de autenticación
+            console.error("Error al iniciar sesión:", error);
+        });
+}
+
+function checkUserRole(userId) {
+    // Obtener el documento del usuario desde Firestore
+    db.collection("usuarios").doc(userId).get()
+        .then(function (doc) {
+            if (doc.exists) {
+                var userRole = doc.data().rol;
+
+                // Verificar si el usuario es un administrador
+                if (userRole === "administrador") {
+                    // Redirigir al panel de administrador
+                    window.location.href = "Empleado.html";
+                } else {
+                    // El usuario no tiene permisos de administrador
+                    console.log("No tienes permisos de administrador.");
+                }
+            } else {
+                // El documento del usuario no existe en Firestore
+                console.log("Usuario no encontrado en la base de datos.");
+            }
+        })
+        .catch(function (error) {
+            console.error("Error al obtener el documento del usuario:", error);
+        });
+}
+
 function iniciarSesionGoogle() {
     var provider = new firebase.auth.GoogleAuthProvider();
 
@@ -105,6 +147,7 @@ function iniciarSesionGoogle() {
             console.error(error);
             mostrarMensajeError("Hubo un problema al autenticar con Google. Por favor, inténtalo de nuevo.");
         });
+        checkUserRole(user.uid);
 }
 
 function mostrarMensajeExito(mensaje) {
@@ -137,4 +180,29 @@ function mostrarMensajeAdvertencia(mensaje) {
 
 window.onload = function () {
     handleRedirectResult();
+
+    var formularioInicioSesion = document.getElementById("formularioInicioSesion");
+    if (formularioInicioSesion) {
+        formularioInicioSesion.addEventListener("submit", function (event) {
+            event.preventDefault();
+            iniciarSesion();
+        });
+    } else {
+        console.error("El elemento con ID 'formularioInicioSesion' no fue encontrado.");
+    }
+
 };
+
+document.getElementById("formularioInicioSesion").addEventListener("submit", function (event) {
+    event.preventDefault();
+    iniciarSesion();
+});
+
+// Función para realizar la autenticación con Google
+document.getElementById("botonGoogle").addEventListener("click", function () {
+    iniciarSesionGoogle();
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    handleRedirectResult();
+});
