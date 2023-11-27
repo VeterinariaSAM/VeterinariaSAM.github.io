@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 
+/* Sección de estilos generales del cuerpo de la página */
 body {
   background: url('../Imageneshtml/fondoNavidad.jpg') center center fixed;
   background-size: cover;
@@ -65,8 +66,12 @@ a:hover {
   color: #fff;
 }
 
-.contenido-tab > div:last-child {
+.contenido-tab > div {
   display: none;
+}
+
+.contenido-tab > div.active {
+  display: block;
 }
 
 h1 {
@@ -122,11 +127,13 @@ input {
   border-radius: 0;
   transition: all 0.5s ease;
   border-radius: 5px;
+  
 }
 
 input:focus {
   outline: none;
   border-color: rgb(255, 85, 0);
+  
 }
 
 .contenedor-input {
