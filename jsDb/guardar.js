@@ -71,3 +71,7 @@ function mostrarMensajeAdvertencia(mensaje) {
         icon: 'warning',
     });
 }
+// Agrega esto al cargar la página
+window.onload = function () {
+    handleRedirectResult();
+};
