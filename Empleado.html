@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,36 +15,44 @@
             align-items: center;
             cursor: pointer;
             padding: 10px;
-            background-color: rgb(136, 6, 6); /* Color de fondo */
+            background-color: rgb(136, 6, 6);
+            /* Color de fondo */
             border-radius: 5px;
-            transition: background-color 0.3s ease; /* Transición de color de fondo */
+            transition: background-color 0.3s ease;
+            /* Transición de color de fondo */
         }
-    
+
         .menu-icon:hover {
-            background-color: #e0e0e0; /* Cambio de color al pasar el ratón */
+            background-color: #e0e0e0;
+            /* Cambio de color al pasar el ratón */
         }
-    
+
         #nombreDeUsuario {
             margin-right: 10px;
             font-weight: bold;
         }
-    
+
         .boton-cerrar-sesion {
-            background-color: #d9534f; /* Color de fondo del botón */
-            color: #fff; /* Color del texto del botón */
+            background-color: #d9534f;
+            /* Color de fondo del botón */
+            color: #fff;
+            /* Color del texto del botón */
             padding: 5px 10px;
             border: none;
             border-radius: 3px;
             cursor: pointer;
-            transition: background-color 0.3s ease; /* Transición de color de fondo */
+            transition: background-color 0.3s ease;
+            /* Transición de color de fondo */
         }
-    
+
         .boton-cerrar-sesion:hover {
-            background-color: #c9302c; /* Cambio de color al pasar el ratón */
+            background-color: #c9302c;
+            /* Cambio de color al pasar el ratón */
         }
     </style>
-    
+
 </head>
+
 <body>
     <div class="container">
         <nav class="sidebar">
@@ -61,7 +70,7 @@
                     <span id="nombreDeUsuario">Admin</span>
                     <button onclick="cerrarSesion()" class="boton-cerrar-sesion">Cerrar Sesión</button>
                 </div>
-               
+
                 <div class="menu-icons" onclick="toggleMenu()">
                     <a href="iniciar_Sesion.html" class="header-button">
                         <span id="userStatus"></span>
@@ -72,11 +81,8 @@
             </header>
 
             <ul id="nav-options">
-                <li class="active"><a href="catalogoProductos.html">Productos</a></li>
-                <li class="active"><a href="contacto.html">Contacto</a></li>
-                <li class="active"><a href="citas.html">Agendar Cita</a></li>
-                <li class="active"><a href="somos.html">¿Quienes Somos?</a></li>
-                <li class="active"><a href="Dudas.html">Preguntas frecuentes</a></li>
+                <li class="active"><a href="horarios.html">Horarios</a></li>
+                <li class="active"><a href="AgregarProducto.html">Agregar Productos</a></li>
             </ul>
         </nav>
         <br>
@@ -86,91 +92,93 @@
         <br>
         <br>
         <br>
-    <div class="form-container">
-        <br><br>
-        <h1>Agregar Empleado</h1>
-        <form id="employeeForm">
-            <label for="firstName">Nombre:</label>
-            <input type="text" id="firstName" required>
+        <div class="form-container">
+            <br><br>
+            <h1>Agregar Empleado</h1>
+            <form id="employeeForm">
+                <label for="firstName">Nombre:</label>
+                <input type="text" id="firstName" required>
 
-            <label for="lastName">Apellidos:</label>
-            <input type="text" id="lastName" required>
+                <label for="lastName">Apellidos:</label>
+                <input type="text" id="lastName" required>
 
-            <label for="hireDate">Fecha de Contratación:</label>
-            <input type="date" id="hireDate" required>
+                <label for="hireDate">Fecha de Contratación:</label>
+                <input type="date" id="hireDate" required>
 
-            <label for="role">Rol:</label>
-            <select id="role">
-                <option value="empleado en tienda fisica">Empleado en Tienda Física</option>
-                <option value="administrador">Administrador (Página web)</option>
-                <option value="veterinario">Veterinario</option>
-                <option value="estilista">Estilista</option>
-                <option value="mantenimiento web">Mantenimiento WEB</option>
-            </select>
+                <label for="role">Rol:</label>
+                <select id="role">
+                    <option value="empleado en tienda fisica">Empleado en Tienda Física</option>
+                    <option value="administrador">Administrador (Página web)</option>
+                    <option value="veterinario">Veterinario</option>
+                    <option value="estilista">Estilista</option>
+                    <option value="mantenimiento web">Mantenimiento WEB</option>
+                </select>
 
-            <button type="button" id="addButton">Agregar Empleado</button>
-        </form>
+                <button type="button" id="addButton">Agregar Empleado</button>
+            </form>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Rol</th>
-                    <th>Fecha de Contratación</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody id="employeeList">
-                <!-- Aquí se mostrarán los empleados agregados -->
-            </tbody>
-        </table>
-    </div>
-
-    <footer>
-        <div class="footer-container">
-            <div class="social-media">
-                <ul>
-                    <li><a href="https://www.facebook.com/profile.php?id=100095350443486"
-                        target="_blank"><img src="Imageneshtml/logoFB.png" alt="Facebook"></a></li>
-                <li><a href="https://instagram.com/vet_s.a.m?igshid=MzNlNGNkZWQ4Mg=="
-                        target="_blank"><img src="Imageneshtml/logoIG.png" alt="Instagram"></a></li>
-                        <li><a href="https://api.whatsapp.com/send?phone=14804396072" target="_blank"><img src="Imageneshtml/logoWA.png" alt="WhatsApp"></a></li>
-
-                <p>&copy; 2023 Veterinaria S.A.M Phantoms</p>
-                    <p>Calle Glorieta de Fuente de Petróleos 340, Evolucion, 57700 Nezahualcóyotl, Méx.</p>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <ul>
-                    <li class="footer-li"><a href="politicas.html">Política de Privacidad |</a></li>
-                    <li class="footer-li"><a href="Dudas.html">Preguntas frecuentes | </a></li>
-                    <li class="footer-li"><a href="mailto:veterinariasam102@gmail.com">veterinariasam102@gmail.com</a></li>
-                </ul>
-            </div>
-            <div>
-                <br>
-            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Rol</th>
+                        <th>Fecha de Contratación</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="employeeList">
+                    <!-- Aquí se mostrarán los empleados agregados -->
+                </tbody>
+            </table>
         </div>
-    </footer>
+
+        <footer>
+            <div class="footer-container">
+                <div class="social-media">
+                    <ul>
+                        <li><a href="https://www.facebook.com/profile.php?id=100095350443486" target="_blank"><img
+                                    src="Imageneshtml/logoFB.png" alt="Facebook"></a></li>
+                        <li><a href="https://instagram.com/vet_s.a.m?igshid=MzNlNGNkZWQ4Mg==" target="_blank"><img
+                                    src="Imageneshtml/logoIG.png" alt="Instagram"></a></li>
+                        <li><a href="https://api.whatsapp.com/send?phone=14804396072" target="_blank"><img
+                                    src="Imageneshtml/logoWA.png" alt="WhatsApp"></a></li>
+
+                        <p>&copy; 2023 Veterinaria S.A.M Phantoms</p>
+                        <p>Calle Glorieta de Fuente de Petróleos 340, Evolucion, 57700 Nezahualcóyotl, Méx.</p>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li class="footer-li"><a href="politicas.html">Política de Privacidad |</a></li>
+                        <li class="footer-li"><a href="Dudas.html">Preguntas frecuentes | </a></li>
+                        <li class="footer-li"><a
+                                href="mailto:veterinariasam102@gmail.com">veterinariasam102@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <br>
+                </div>
+            </div>
+        </footer>
 
 
-    <script>
-        const addButton = document.getElementById('addButton');
-        const employeeList = document.getElementById('employeeList');
-        const employeeForm = document.getElementById('employeeForm');
+        <script>
+            const addButton = document.getElementById('addButton');
+            const employeeList = document.getElementById('employeeList');
+            const employeeForm = document.getElementById('employeeForm');
 
-        addButton.addEventListener('click', () => {
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const hireDate = document.getElementById('hireDate').value;
-            const role = document.getElementById('role').value;
+            addButton.addEventListener('click', () => {
+                const firstName = document.getElementById('firstName').value;
+                const lastName = document.getElementById('lastName').value;
+                const hireDate = document.getElementById('hireDate').value;
+                const role = document.getElementById('role').value;
 
-            const id = generateID(hireDate);
+                const id = generateID(hireDate);
 
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
                 <td>${id}</td>
                 <td>${firstName}</td>
                 <td>${lastName}</td>
@@ -179,55 +187,55 @@
                 <td><button type="button" class="deleteButton">Eliminar</button></td>
             `;
 
-            const deleteButton = tr.querySelector('.deleteButton');
-            deleteButton.addEventListener('click', () => deleteEmployee(id, tr));
+                const deleteButton = tr.querySelector('.deleteButton');
+                deleteButton.addEventListener('click', () => deleteEmployee(id, tr));
 
-            employeeList.appendChild(tr);
+                employeeList.appendChild(tr);
 
-            // Limpiar el formulario después de agregar el empleado
-            employeeForm.reset();
+                // Limpiar el formulario después de agregar el empleado
+                employeeForm.reset();
 
-            // Guardar empleado en el Local Storage
-            const employeeData = {
-                id,
-                firstName,
-                lastName,
-                hireDate,
-                role
-            };
+                // Guardar empleado en el Local Storage
+                const employeeData = {
+                    id,
+                    firstName,
+                    lastName,
+                    hireDate,
+                    role
+                };
 
-            saveEmployeeToLocalStorage(employeeData);
-        });
+                saveEmployeeToLocalStorage(employeeData);
+            });
 
-        function generateID(hireDate) {
-            const date = new Date(hireDate);
-            const year = date.getFullYear().toString().substr(-2);
-            const month = (date.getMonth() + 1).toString().padStart(2, '0');
-            const day = date.getDate().toString().padStart(2, '0');
-            return `${year}${month}${day}`;
-        }
-
-        function saveEmployeeToLocalStorage(employeeData) {
-            let employees = JSON.parse(localStorage.getItem('employees')) || [];
-            employees.push(employeeData);
-            localStorage.setItem('employees', JSON.stringify(employees));
-        }
-
-        function deleteEmployee(id, row) {
-            if (confirm('¿Estás seguro que deseas eliminar este empleado?')) {
-                const employees = JSON.parse(localStorage.getItem('employees')) || [];
-                const updatedEmployees = employees.filter((employee) => employee.id !== id);
-                localStorage.setItem('employees', JSON.stringify(updatedEmployees));
-                row.remove();
+            function generateID(hireDate) {
+                const date = new Date(hireDate);
+                const year = date.getFullYear().toString().substr(-2);
+                const month = (date.getMonth() + 1).toString().padStart(2, '0');
+                const day = date.getDate().toString().padStart(2, '0');
+                return `${year}${month}${day}`;
             }
-        }
 
-        function renderEmployeeList() {
-            const employees = JSON.parse(localStorage.getItem('employees')) || [];
-            employeeList.innerHTML = '';
-            employees.forEach((employee) => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
+            function saveEmployeeToLocalStorage(employeeData) {
+                let employees = JSON.parse(localStorage.getItem('employees')) || [];
+                employees.push(employeeData);
+                localStorage.setItem('employees', JSON.stringify(employees));
+            }
+
+            function deleteEmployee(id, row) {
+                if (confirm('¿Estás seguro que deseas eliminar este empleado?')) {
+                    const employees = JSON.parse(localStorage.getItem('employees')) || [];
+                    const updatedEmployees = employees.filter((employee) => employee.id !== id);
+                    localStorage.setItem('employees', JSON.stringify(updatedEmployees));
+                    row.remove();
+                }
+            }
+
+            function renderEmployeeList() {
+                const employees = JSON.parse(localStorage.getItem('employees')) || [];
+                employeeList.innerHTML = '';
+                employees.forEach((employee) => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
                     <td>${employee.id}</td>
                     <td>${employee.firstName}</td>
                     <td>${employee.lastName}</td>
@@ -236,88 +244,105 @@
                     <td><button type="button" class="deleteButton">Eliminar</button></td>
                 `;
 
-                const deleteButton = tr.querySelector('.deleteButton');
-                deleteButton.addEventListener('click', () => deleteEmployee(employee.id, tr));
+                    const deleteButton = tr.querySelector('.deleteButton');
+                    deleteButton.addEventListener('click', () => deleteEmployee(employee.id, tr));
 
-                employeeList.appendChild(tr);
+                    employeeList.appendChild(tr);
+                });
+            }
+
+            // Mostrar empleados guardados en el Local Storage al cargar la página
+            renderEmployeeList();
+        </script>
+        <!-- este alch igual no se de que sea, ya estaba cuando llegue jajaja 💀-->
+        <script>
+            document.getElementById('toggleSidebar').addEventListener('click', function () {
+                document.querySelector('.sidebar').classList.toggle('open');
             });
-        }
+            let mostrador = document.getElementById("mostrador");
+            let seleccion = document.getElementById("seleccion");
+            let imgSeleccionada = document.getElementById("img");
+            let modeloSeleccionado = document.getElementById("modelo");
+            let descripSeleccionada = document.getElementById("descripcion");
+            let precioSeleccionado = document.getElementById("precio");
+            let descuentoSeleccionado = document.getElementById("descuento");
 
-        // Mostrar empleados guardados en el Local Storage al cargar la página
-        renderEmployeeList();
-    </script>
-<!-- este alch igual no se de que sea, ya estaba cuando llegue jajaja 💀-->
-    <script>
-        document.getElementById('toggleSidebar').addEventListener('click', function () {
-            document.querySelector('.sidebar').classList.toggle('open');
-        });
-        let mostrador = document.getElementById("mostrador");
-        let seleccion = document.getElementById("seleccion");
-        let imgSeleccionada = document.getElementById("img");
-        let modeloSeleccionado = document.getElementById("modelo");
-        let descripSeleccionada = document.getElementById("descripcion");
-        let precioSeleccionado = document.getElementById("precio");
-        let descuentoSeleccionado = document.getElementById("descuento");
+            function cargar(item) {
+                quitarBordes();
+                mostrador.style.width = "60%";
+                seleccion.style.width = "40%";
+                seleccion.style.opacity = "1";
+                item.style.border = "2px solid red";
 
-        function cargar(item) {
-            quitarBordes();
-            mostrador.style.width = "60%";
-            seleccion.style.width = "40%";
-            seleccion.style.opacity = "1";
-            item.style.border = "2px solid red";
+                imgSeleccionada.src = item.getElementsByTagName("img")[0].src;
 
-            imgSeleccionada.src = item.getElementsByTagName("img")[0].src;
+                modeloSeleccionado.innerHTML = item.getElementsByTagName("p")[0].innerHTML;
 
-            modeloSeleccionado.innerHTML = item.getElementsByTagName("p")[0].innerHTML;
+                descripSeleccionada.innerHTML = "Descripción del Poducto ";
 
-            descripSeleccionada.innerHTML = "Descripción del Poducto ";
-
-            precioSeleccionado.innerHTML = item.getElementsByTagName("span")[0].innerHTML;
+                precioSeleccionado.innerHTML = item.getElementsByTagName("span")[0].innerHTML;
 
 
-        }
-        function cerrar() {
-            mostrador.style.width = "100%";
-            seleccion.style.width = "0%";
-            seleccion.style.opacity = "0";
-            quitarBordes();
-        }
-        function quitarBordes() {
-            var items = document.getElementsByClassName("item");
-            for (i = 0; i < items.length; i++) {
-                items[i].style.border = "none";
             }
-        }
-    </script>
-
-
-    <!-- este we se encarga de que el header se minimice al bajar o navegar en la pagina-->
-    <script>
-        window.addEventListener('scroll', function () {
-            var header = document.querySelector('.scroll-header');
-            if (window.scrollY > 100) {
-                header.classList.add('small');
-            } else {
-                header.classList.remove('small');
+            function cerrar() {
+                mostrador.style.width = "100%";
+                seleccion.style.width = "0%";
+                seleccion.style.opacity = "0";
+                quitarBordes();
             }
-        });
-
-    </script>
-<!--este es pa cuando se haga clic fuera del banner, este se cierre auto -->
-<script>
-    document.addEventListener('click', function (event) {
-        var sidebar = document.querySelector('.sidebar');
-        var targetElement = event.target;
-
-        if (!sidebar.contains(targetElement) && targetElement.id !== 'toggleSidebar') {
-            sidebar.classList.remove('open');
-        }
-    });
-
-</script>
+            function quitarBordes() {
+                var items = document.getElementsByClassName("item");
+                for (i = 0; i < items.length; i++) {
+                    items[i].style.border = "none";
+                }
+            }
+        </script>
 
 
-<script src="js/navegacion.js"></script>
+        <!-- este we se encarga de que el header se minimice al bajar o navegar en la pagina-->
+        <script>
+            window.addEventListener('scroll', function () {
+                var header = document.querySelector('.scroll-header');
+                if (window.scrollY > 100) {
+                    header.classList.add('small');
+                } else {
+                    header.classList.remove('small');
+                }
+            });
+
+        </script>
+        <!--este es pa cuando se haga clic fuera del banner, este se cierre auto -->
+        <script>
+            document.addEventListener('click', function (event) {
+                var sidebar = document.querySelector('.sidebar');
+                var targetElement = event.target;
+
+                if (!sidebar.contains(targetElement) && targetElement.id !== 'toggleSidebar') {
+                    sidebar.classList.remove('open');
+                }
+            });
+
+        </script>
+
+        <script>
+            (() => {
+                function documentReady() {
+                    const miElemento = document.getElementById('nombreDeUsuarioMenu');
+                    const nombreGuardado = localStorage.getItem("nombre");
+
+                    if (nombreGuardado) {
+                        miElemento.textContent = nombreGuardado;
+                    }
+                    console.log(nombreGuardado);
+                }
+
+                document.addEventListener('DOMContentLoaded', documentReady);
+            })();
+
+
+        </script>
+
+        <script src="js/navegacion.js"></script>
 </body>
-</html>
 
+</html>

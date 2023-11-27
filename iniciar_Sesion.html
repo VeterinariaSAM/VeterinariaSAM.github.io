@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="jsDb/admin.js"></script>
+    <script src="jsDb/usuario.js"></script>
 
 
 
@@ -19,7 +20,7 @@
     <link rel="stylesheet" href="estilos/estiloSesion.css" />
 
     <title>Formulario Login y Registro de Usuarios</title>
-    
+
 </head>
 
 <body>
@@ -47,7 +48,6 @@
                         <label for="correoInicioSesion"> Correo <span class="req">*</span> </label>
                         <input type="email" id="correoInicioSesion" required />
                     </div>
-            
                     <div class="contenedor-input">
                         <label for="passwordInicioSesion"> Contraseña <span class="req">*</span> </label>
                         <input type="password" id="passwordInicioSesion" required />
@@ -56,58 +56,58 @@
                     <input type="submit" class="button button-block" value="Iniciar Sesión" />
                 </form>
             </div>
-        <!-- Registrarse -->
-        <div id="registrarse">
-            <h1>Registrarse</h1>
-            <form action="#" method="post" id="registroForm">
-                <div class="fila-arriba">
+            <!-- Registrarse -->
+            <div id="registrarse">
+                <h1>Registrarse</h1>
+                <form action="#" method="post" id="registroForm">
+                    <div class="fila-arriba">
+                        <div class="contenedor-input">
+                            <label for="name"> Nombre <span class="req">*</span> </label>
+                            <input type="text" maxlength="20" required id="name" />
+                        </div>
+
+                        <div class="contenedor-input">
+                            <label for="last"> Apellido <span class="req">*</span> </label>
+                            <input type="text" maxlength="20" required id="last" />
+                        </div>
+                    </div>
                     <div class="contenedor-input">
-                        <label for="name"> Nombre <span class="req">*</span> </label>
-                        <input type="text" maxlength="20" required id="name" />
+                        <label> Nombre de Usuario <span class="req">*</span> </label>
+                        <input type="text" required id="usName" />
+                    </div>
+                    <div class="contenedor-input">
+                        <label> Email <span class="req">*</span> </label>
+                        <input type="email" required id="email" />
+                    </div>
+                    <div class="contenedor-input">
+                        <label for="fechaNac">
+                            Fecha de Nacimiento <span class="req">*</span>
+                        </label>
+                        <br /><br />
+                        <input type="date" required id="fechaNac" />
+                        <small id="edadError" style="color: red"></small>
+                    </div>
+                    <div class="contenedor-input">
+                        <label> Contraseña <span class="req">*</span> </label>
+                        <input type="password" id="password" minlength="8" required />
                     </div>
 
                     <div class="contenedor-input">
-                        <label for="last"> Apellido <span class="req">*</span> </label>
-                        <input type="text" maxlength="20" required id="last" />
+                        <label> Repetir Contraseña <span class="req">*</span> </label>
+                        <input type="password" id="confirmPassword" minlength="8" required />
+                        <small id="passwordError" style="color: red"></small>
                     </div>
-                </div>
-                <div class="contenedor-input">
-                    <label> Nombre de Usuario <span class="req">*</span> </label>
-                    <input type="text" required id="usName" />
-                </div>
-                <div class="contenedor-input">
-                    <label> Email <span class="req">*</span> </label>
-                    <input type="email" required id="email" />
-                </div>
-                <div class="contenedor-input">
-                    <label for="fechaNac">
-                        Fecha de Nacimiento <span class="req">*</span>
-                    </label>
-                    <br /><br />
-                    <input type="date" required id="fechaNac" />
-                    <small id="edadError" style="color: red"></small>
-                </div>
-                <div class="contenedor-input">
-                    <label> Contraseña <span class="req">*</span> </label>
-                    <input type="password" id="password" minlength="8" required />
-                </div>
 
-                <div class="contenedor-input">
-                    <label> Repetir Contraseña <span class="req">*</span> </label>
-                    <input type="password" id="confirmPassword" minlength="8" required />
-                    <small id="passwordError" style="color: red"></small>
-                </div>
+                    <div class="contenedor-input">
+                        <p class="leyenda">Regístrate también con alguna de tus redes.</p>
+                        <button type="button" onclick="iniciarSesionGoogle()" class="button-google">
+                            <img src="Imageneshtml/google_logo.jpg" alt="Iniciar sesión con Google" />
+                        </button>
+                    </div>
 
-                <div class="contenedor-input">
-                    <p class="leyenda">Regístrate también con alguna de tus redes.</p>
-                    <button type="button" onclick="iniciarSesionGoogle()" class="button-google">
-                        <img src="Imageneshtml/google_logo.jpg" alt="Iniciar sesión con Google" />
-                    </button>
-                </div>
-
-                <input type="submit" class="button button-block" onclick="guardar()" value="Registrarse" />
-            </form>
-        </div>
+                    <input type="submit" class="button button-block" onclick="guardar()" value="Registrarse" />
+                </form>
+            </div>
         </div>
     </div>
 
@@ -239,6 +239,36 @@
     <!-- Scripts para la inicializacion de Fb y Fs  -->
     <script src="jsDb/configuracion.js"></script>
     <script src="jsDb/guardar.js"></script>
+
+    <!-- Scripts para inicio de sesion  -->
+    <script>
+        function iniciarSesion() {
+            var email = document.getElementById("correoInicioSesion").value;
+            var password = document.getElementById("passwordInicioSesion").value;
+    
+            // Realizar la autenticación con Firebase
+            auth.signInWithEmailAndPassword(email, password)
+                .then(function (userCredential) {
+                    // El inicio de sesión fue exitoso
+                    var user = userCredential.user;
+                    // Puedes redirigir al usuario o realizar otras acciones necesarias
+                    console.log("Inicio de sesión exitoso para el usuario:", user);
+                    checkUserRole(user.uid);
+                    // Redirigir al usuario a "inicio.html" después de verificar el rol
+                    window.location.href = "inicio.html";
+                })
+                .catch(function (error) {
+                    // Manejar errores de autenticación
+                    console.error("Error al iniciar sesión:", error);
+                    // Puedes mostrar un mensaje de error al usuario
+                    mostrarMensajeError("Correo electrónico o contraseña incorrectos");
+                });
+    
+            // Devuelve false para evitar que el formulario se envíe de forma predeterminada
+            return false;
+        }
+    </script>
+    
 </body>
 
 </html>

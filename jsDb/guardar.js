@@ -178,31 +178,3 @@ function mostrarMensajeAdvertencia(mensaje) {
     });
 }
 
-window.onload = function () {
-    handleRedirectResult();
-
-    var formularioInicioSesion = document.getElementById("formularioInicioSesion");
-    if (formularioInicioSesion) {
-        formularioInicioSesion.addEventListener("submit", function (event) {
-            event.preventDefault();
-            iniciarSesion();
-        });
-    } else {
-        console.error("El elemento con ID 'formularioInicioSesion' no fue encontrado.");
-    }
-
-};
-
-document.getElementById("formularioInicioSesion").addEventListener("submit", function (event) {
-    event.preventDefault();
-    iniciarSesion();
-});
-
-// Función para realizar la autenticación con Google
-document.getElementById("botonGoogle").addEventListener("click", function () {
-    iniciarSesionGoogle();
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    handleRedirectResult();
-});
