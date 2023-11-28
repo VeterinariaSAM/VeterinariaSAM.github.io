@@ -249,22 +249,22 @@
 
     <!-- Scripts para inicio de sesion  -->
 
+<!-- Agrega un elemento HTML para mostrar el mensaje de inicio de sesión -->
+<div id="mensajeInicioSesion"></div>
+
 <script>
     var auth = firebase.auth();
-
-    // Configura el proveedor de autenticación de Google
     const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
     function iniciarSesion() {
         var email = document.getElementById("correoInicioSesion").value;
         var password = document.getElementById("passwordInicioSesion").value;
 
-        console.log("Email:", email);
-        console.log("Contraseña:", password);
+        // Muestra el mensaje de inicio de sesión
+        mostrarMensajeInicioSesion("Iniciando sesión...");
 
         // Verifica si se está utilizando la autenticación de Google
         if (email === "google" && password === "google") {
-            // Inicia sesión con Google
             auth.signInWithPopup(googleAuthProvider)
                 .then(function (result) {
                     // Autenticación exitosa con Google
@@ -288,7 +288,6 @@
                     console.error("Error al iniciar sesión con Google:", error);
                 });
         } else {
-            // Realizar la autenticación con Firebase usando correo y contraseña
             auth.signInWithEmailAndPassword(email, password)
                 .then(function (userCredential) {
                     // Autenticación exitosa con correo y contraseña
@@ -318,6 +317,12 @@
 
         // Devuelve false para evitar que el formulario se envíe de forma predeterminada
         return false;
+    }
+
+    // Función para mostrar el mensaje de inicio de sesión en un elemento HTML
+    function mostrarMensajeInicioSesion(mensaje) {
+        var mensajeElement = document.getElementById("mensajeInicioSesion");
+        mensajeElement.innerHTML = mensaje;
     }
 </script>
 
