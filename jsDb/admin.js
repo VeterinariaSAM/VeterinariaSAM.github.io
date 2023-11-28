@@ -118,10 +118,7 @@ function iniciarSesionGoogle() {
             var user = result.user;
             console.log(user);
 
-            var nombre = user.displayName;
-            var correo = user.email;
-
-            // Mostrar animación de inicio de sesión correcto
+            // Mostrar animación de inicio de sesión correcto para ambos formularios
             mostrarAnimacionInicioSesionCorrecto();
 
             var usuarioRef = db.collection("usuarios").doc(user.uid);
@@ -156,6 +153,18 @@ function iniciarSesionGoogle() {
         });
     checkUserRole(user.uid);
 }
+
+function mostrarAnimacionInicioSesionCorrecto() {
+    // Agrega código para mostrar la animación de inicio de sesión correcto
+    var animacionElement = document.getElementById("animacionInicioSesionCorrecto");
+    animacionElement.style.display = "block";
+
+    // Oculta la animación después de un tiempo (por ejemplo, 3 segundos)
+    setTimeout(function () {
+        animacionElement.style.display = "none";
+    }, 3000); // 3000 milisegundos = 3 segundos
+}
+
 
 function mostrarAnimacionInicioSesionCorrecto() {
     // Agrega código para mostrar la animación de inicio de sesión correcto
