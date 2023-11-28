@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    
+
     <link rel="icon" href="Imageneshtml/icono.png">
     <meta charset=" UTF-8" />
     <meta name="viewport"
@@ -242,91 +242,13 @@
             });
     </script>
 
-
-    <!-- Scripts para la inicializacion de Fb y Fs  -->
     <script src="jsDb/configuracion.js"></script>
     <script src="jsDb/guardar.js"></script>
 
     <!-- Scripts para inicio de sesion  -->
 
-<!-- Agrega un elemento HTML para mostrar el mensaje de inicio de sesión -->
-<div id="mensajeInicioSesion"></div>
 
-<script>
-    var auth = firebase.auth();
-    const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-    function iniciarSesion() {
-        var email = document.getElementById("correoInicioSesion").value;
-        var password = document.getElementById("passwordInicioSesion").value;
-
-        // Muestra el mensaje de inicio de sesión
-        mostrarMensajeInicioSesion("Iniciando sesión...");
-
-        // Verifica si se está utilizando la autenticación de Google
-        if (email === "google" && password === "google") {
-            auth.signInWithPopup(googleAuthProvider)
-                .then(function (result) {
-                    // Autenticación exitosa con Google
-                    var user = result.user;
-
-                    // Consultar Firestore para obtener información adicional del usuario
-                    db.collection("usuarios").doc(user.uid).get()
-                        .then(function (doc) {
-                            if (doc.exists) {
-                                var nombreUsuarioFirestore = doc.data().nombre_usuario;
-                                // Resto del código...
-                            } else {
-                                console.log("Documento no encontrado en Firestore para el usuario con UID:", user.uid);
-                            }
-                        })
-                        .catch(function (error) {
-                            console.error("Error al obtener datos de Firestore:", error);
-                        });
-                })
-                .catch(function (error) {
-                    console.error("Error al iniciar sesión con Google:", error);
-                });
-        } else {
-            auth.signInWithEmailAndPassword(email, password)
-                .then(function (userCredential) {
-                    // Autenticación exitosa con correo y contraseña
-                    var user = userCredential.user;
-
-                    // Consultar Firestore para obtener información adicional del usuario
-                    db.collection("usuarios").doc(user.uid).get()
-                        .then(function (doc) {
-                            if (doc.exists) {
-                                var nombreUsuarioFirestore = doc.data().nombre_usuario;
-                                // Resto del código...
-                            } else {
-                                console.log("Documento no encontrado en Firestore para el usuario con UID:", user.uid);
-                            }
-                        })
-                        .catch(function (error) {
-                            console.error("Error al obtener datos de Firestore:", error);
-                        });
-                })
-                .catch(function (error) {
-                    // Manejar errores de autenticación
-                    console.error("Error al iniciar sesión:", error);
-                    // Puedes mostrar un mensaje de error al usuario
-                    mostrarMensajeError("Correo electrónico o contraseña incorrectos");
-                });
-        }
-
-        // Devuelve false para evitar que el formulario se envíe de forma predeterminada
-        return false;
-    }
-
-    // Función para mostrar el mensaje de inicio de sesión en un elemento HTML
-    function mostrarMensajeInicioSesion(mensaje) {
-        var mensajeElement = document.getElementById("mensajeInicioSesion");
-        mensajeElement.innerHTML = mensaje;
-    }
-</script>
-
-    
 
 </body>
 
