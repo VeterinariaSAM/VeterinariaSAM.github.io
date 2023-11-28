@@ -24,131 +24,68 @@ function guardar() {
         return;
     }
 
+    // Validar longitud de contraseña
+    if (contraseña.length < 8) {
+        alert("La contraseña debe tener al menos 8 caracteres");
+        return;
+    }
+
     // Validar contraseñas coincidentes
     if (contraseña !== confirmPassword) {
         alert("Las contraseñas no coinciden");
         return;
     }
 
-    // Continuar con el registro si todas las validaciones son exitosas
-    db.collection("usuarios").add({
-        nombre: nombre,
-        apellido: apellido,
-        nombre_usuario: nombre_usuario,
-        correo: correo,
-        fecha_nac: fecha_nac,
-        contraseña: contraseña
-    })
-    .then((docRef) => {
-        // Mostrar un mensaje de éxito con SweetAlert
-        Swal.fire({
-            title: 'Registro exitoso',
-            text: 'Tu registro se ha completado correctamente',
-            icon: 'success',
-            timer: 2000,
-            showConfirmButton: false
-        }).then(() => {
-            // Ocultar el formulario de registro
-            document.getElementById("registrarse").style.display = "none";
-            // Mostrar el formulario de inicio de sesión
-            document.getElementById("iniciar-sesion").style.display = "block";
-        });
-    })
-    .catch((error) => {
-        // Mostrar un mensaje de error genérico con SweetAlert
-        Swal.fire({
-            title: 'Error',
-            text: 'Hubo un problema al registrar tus datos. Por favor, inténtalo de nuevo.',
-            icon: 'error',
-        });
-    });
-}
+    // Crear el usuario en Firebase Authentication
+    auth.createUserWithEmailAndPassword(correo, contraseña)
+        .then((userCredential) => {
+            // Obtener el ID del usuario registrado
+            var userId = userCredential.user.uid;
 
-function iniciarSesion() {
-    var email = document.getElementById("emailInicioSesion").value;
-    var password = document.getElementById("passwordInicioSesion").value;
-
-    // Realizar la autenticación con Firebase
-    auth.signInWithEmailAndPassword(email, password)
-        .then(function (userCredential) {
-            // Verificar el rol del usuario
-            var user = userCredential.user;
-            checkUserRole(user.uid);
-        })
-        .catch(function (error) {
-            // Manejar errores de autenticación
-            console.error("Error al iniciar sesión:", error);
-        });
-}
-
-function checkUserRole(userId) {
-    // Obtener el documento del usuario desde Firestore
-    db.collection("usuarios").doc(userId).get()
-        .then(function (doc) {
-            if (doc.exists) {
-                var userRole = doc.data().rol;
-
-                // Verificar si el usuario es un administrador
-                if (userRole === "administrador") {
-                    // Redirigir al panel de administrador
-                    window.location.href = "Empleado.html";
-                } else {
-                    // El usuario no tiene permisos de administrador
-                    console.log("No tienes permisos de administrador.");
-                }
-            } else {
-                // El documento del usuario no existe en Firestore
-                console.log("Usuario no encontrado en la base de datos.");
-            }
-        })
-        .catch(function (error) {
-            console.error("Error al obtener el documento del usuario:", error);
-        });
-}
-
-function iniciarSesionGoogle() {
-    var provider = new firebase.auth.GoogleAuthProvider();
-
-    firebase.auth().signInWithPopup(provider)
-        .then((result) => {
-            var user = result.user;
-            console.log(user);
-
-            var nombre = user.displayName;
-            var correo = user.email;
-
-            var usuarioRef = db.collection("usuarios").doc(user.uid);
-
-            usuarioRef.get().then((doc) => {
-                if (doc.exists) {
-                    console.log("Usuario ya registrado:", doc.data());
-                    mostrarMensajeAdvertencia("Ya estás registrado. No es necesario volver a registrarte.");
-                } else {
-                    usuarioRef.set({
-                        nombre: user.displayName,
-                        correo: user.email,
-                    }).then(() => {
-                        console.log("Usuario registrado con éxito");
-                        mostrarMensajeExito("Tu registro se ha completado correctamente");
-                        
-                        // Redirige al usuario a "inicio.html" después del registro exitoso
-                        window.location.href = "inicio.html";
-                    }).catch((error) => {
-                        console.error("Error al registrar usuario:", error);
-                        mostrarMensajeError("Hubo un problema al registrar tus datos. Por favor, inténtalo de nuevo.");
-                    });
-                }
-            }).catch((error) => {
-                console.error("Error al verificar registro de usuario:", error);
-                mostrarMensajeError("Hubo un problema al verificar tu registro. Por favor, inténtalo de nuevo.");
+            // Guardar información en Firestore
+            firestore.collection("usuarios").doc(userId).set({
+                nombre: nombre,
+                apellido: apellido,
+                nombre_usuario: nombre_usuario,
+                correo: correo,
+                fecha_nac: fecha_nac,
+            })
+            .then(() => {
+                // Mostrar un mensaje de éxito con SweetAlert
+                Swal.fire({
+                    title: 'Registro exitoso',
+                    text: 'Tu registro se ha completado correctamente',
+                    icon: 'success',
+                    timer: 2000,
+                    showConfirmButton: false
+                }).then(() => {
+                    // Ocultar el formulario de registro
+                    document.getElementById("registrarse").style.display = "none";
+                    // Mostrar el formulario de inicio de sesión
+                    document.getElementById("iniciar-sesion").style.display = "block";
+                });
+            })
+            .catch((error) => {
+                console.error("Error al crear usuario:", error.code, error.message);
+                // Mostrar un mensaje de error genérico con SweetAlert
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Hubo un problema al registrar tus datos en Firestore. Por favor, inténtalo de nuevo.',
+                    icon: 'error',
+                });
             });
         })
         .catch((error) => {
-            console.error(error);
-            mostrarMensajeError("Hubo un problema al autenticar con Google. Por favor, inténtalo de nuevo.");
+            // Mostrar un mensaje de error genérico con SweetAlert
+            Swal.fire({
+                title: 'Error',
+                text: 'Hubo un problema al registrar tus datos en Authentication. Por favor, inténtalo de nuevo.',
+                icon: 'error',
+            });
         });
-        checkUserRole(user.uid);
 }
+
+
 
 function mostrarMensajeExito(mensaje) {
     Swal.fire({

@@ -11,7 +11,7 @@
     <link rel="icon" href="Imageneshtml/icono.png">
     <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="jsDb/admin.js"></script>
+    <script src="jsDb/admin.js"></script>s
     <script src="jsDb/usuario.js"></script>
 
 
@@ -51,6 +51,12 @@
                     <div class="contenedor-input">
                         <label for="passwordInicioSesion"> Contraseña <span class="req">*</span> </label>
                         <input type="password" id="passwordInicioSesion" required />
+                    </div>
+                    <div class="contenedor-input">
+                        <p class="leyenda">Inicia sesion con: </p>
+                        <button type="button" onclick="iniciarSesionGoogle()" class="button-google">
+                            <img src="Imageneshtml/google_logo.jpg" alt="Iniciar sesión con Google" />
+                        </button>
                     </div>
                     <p class="forgot"><a href="#">Se te olvidó la contraseña?</a></p>
                     <input type="submit" class="button button-block" value="Iniciar Sesión" />
@@ -242,20 +248,65 @@
 
     <!-- Scripts para inicio de sesion  -->
     <script>
+        var auth = firebase.auth();
+    
+        // Función para iniciar sesión con Google
+        function iniciarSesionGoogle() {
+            var provider = new firebase.auth.GoogleAuthProvider();
+    
+            auth.signInWithPopup(provider)
+                .then(function (result) {
+                    // Autenticación exitosa con Google
+                    var user = result.user;
+    
+                    // Redirigir a inicio.html
+                    window.location.href = "inicio.html";
+                })
+                .catch(function (error) {
+                    // Manejar errores de autenticación con Google
+                    console.error("Error al iniciar sesión con Google:", error);
+                    // Puedes mostrar un mensaje de error al usuario si lo deseas
+                });
+        }
+    
+        // Resto de tu código...
+    
+        // Función para validar el formulario antes de enviarlo
+        function validarAdministrador() {
+            // Aquí puedes agregar lógica de validación si es necesario
+    
+            // Devuelve true para permitir que el formulario se envíe
+            return true;
+        }
+    
+        // Función para iniciar sesión con correo y contraseña
         function iniciarSesion() {
             var email = document.getElementById("correoInicioSesion").value;
             var password = document.getElementById("passwordInicioSesion").value;
     
+            console.log("Email:", email);
+            console.log("Contraseña:", password);
+    
             // Realizar la autenticación con Firebase
             auth.signInWithEmailAndPassword(email, password)
                 .then(function (userCredential) {
-                    // El inicio de sesión fue exitoso
+                    // Autenticación exitosa
                     var user = userCredential.user;
-                    // Puedes redirigir al usuario o realizar otras acciones necesarias
-                    console.log("Inicio de sesión exitoso para el usuario:", user);
-                    checkUserRole(user.uid);
-                    // Redirigir al usuario a "inicio.html" después de verificar el rol
-                    window.location.href = "inicio.html";
+    
+                    // Consultar Firestore para obtener información adicional del usuario
+                    db.collection("usuarios").doc(user.uid).get()
+                        .then(function (doc) {
+                            if (doc.exists) {
+                                // Aquí puedes acceder a los campos específicos de Firestore
+                                var nombreUsuarioFirestore = doc.data().nombre_usuario;
+                                // Resto del código...
+                            } else {
+                                console.log("Documento no encontrado en Firestore para el usuario con UID:", user.uid);
+                            }
+                        })
+                        .catch(function (error) {
+                            console.error("Error al obtener datos de Firestore:", error);
+                        });
                 })
                 .catch(function (error) {
                     // Manejar errores de autenticación
@@ -269,6 +320,7 @@
         }
     </script>
     
+
 </body>
 
 </html>
