@@ -86,8 +86,9 @@ function iniciarSesionGoogle() {
                 // Si es un nuevo usuario, muestra SweetAlert de registro exitoso
                 Swal.fire("Éxito", "Registro con Google exitoso!", "success");
             } else {
-                // Si el usuario ya existe, muestra SweetAlert de cuenta ya registrada
-                Swal.fire("Advertencia", "Esta cuenta ya está registrada", "warning");
+                // Si el usuario ya existe, redirige a "inicio.html"
+                window.location.href = "inicio.html";
+                return; // Evita ejecutar el código siguiente
             }
         })
         .catch((error) => {
