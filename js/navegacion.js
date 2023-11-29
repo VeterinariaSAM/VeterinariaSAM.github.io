@@ -25,6 +25,8 @@ document.addEventListener('DOMContentLoaded', function () {
             <li class="active"><a href="citas.html">Agendar Cita</a></li>
             <li class="active"><a href="somos.html">¿Quienes Somos?</a></li>
             <li class="active"><a href="Dudas.html">Preguntas frecuentes</a></li>
+            <li class="active"><a href="ver_Citas.html">Ver citas</a></li>
+
             <!-- Otras opciones de navegación estándar -->
         `;
     }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información del Usuario</title>
+    <link rel="icon" href="Imageneshtml/icono.png">
+
+     
+</head>
+
+<body>
+
+    
+
+    <div id="userInfo">
+        <h1>Información del Usuario</h1>
+        <p><strong>Correo:</strong> <span id="userEmail"></span></p>
+        <p><strong>Nombre:</strong> <span id="userName"></span></p>
+        <p><strong>Apellido:</strong> <span id="userLastName"></span></p>
+        <p><strong>Nombre de Usuario:</strong> <span id="userUsername"></span></p>
+        <p><strong>Fecha de Nacimiento:</strong> <span id="userBirthdate"></span></p>
+
+        <button id="cerrarSesionBtn" onclick="cerrarSesion()">Cerrar Sesión</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-auth-compat.js"></script>
+    <script src="jsDb/configuracion.js"></script>
+
+    <script>
+        function cerrarSesion() {
+            // Limpia la información del usuario en el Local Storage (si es necesario)
+            localStorage.removeItem("userData");
+
+            // Redirecciona a la página de inicio de sesión
+            window.location.href = "iniciar_Sesion.html";
+        }
+
+        function cerrarSesionYRedireccionar() {
+            cerrarSesion(); // Llama a la función existente para cerrar la sesión
+        }    </script>
+
+</body>
+
+</html>

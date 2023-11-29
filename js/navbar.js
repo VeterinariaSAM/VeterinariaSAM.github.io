@@ -1,5 +1,4 @@
 const headerDiv = document.querySelector('.one-header');
-
 // Contenido HTML que deseas insertar
 const contenidoHTML = `
 <nav class="sidebar">
@@ -35,12 +34,24 @@ const contenidoHTML = `
                 <span class="badge" style="display:none;">0</span>
             </a>
         </div>
-        <div class="menu-icon" onclick="toggleMenu()">
-            <a href="sesion.html" class="header-button">
-                <span class="nombreDeUsuario"></span>
-                <img src="Imageneshtml/usuario.png" alt="Usuario">
-            </a>
+
+        <div class="navbar" id="navbar">
+            <div class="navbar-left">
+                <button type="button" onclick="terminaSesión()">Cerrar Sesión</button>
+                <fieldset>
+                    <legend>Email</legend>
+                    <output id="email"><progress max="100">Cargando…</progress></output>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Nombre</legend>
+                    <output id="nombre"></output>
+                </fieldset>
+                <br>
+            </div>
+            <figure><img src="" id="avatar" alt="avatar" class="navbar-profile-image"></figure>
         </div>
+        
     </div>
 
 </header>
@@ -52,6 +63,8 @@ const contenidoHTML = `
     <li class="active nav-option-general"><a href="citas.html">Agendar Cita</a></li>
     <li class="active nav-option-general"><a href="somos.html">¿Quienes Somos?</a></li>
     <li class="active nav-option-general"><a href="Dudas.html">Preguntas frecuentes</a></li>
+    <li class="active nav-option-general"><a href="ver_Citas.html">Ver citas</a></li>
+
 </ul>
 </nav>
 `;
@@ -146,4 +159,4 @@ headerDiv.insertAdjacentHTML('afterbegin', contenidoHTML);
 })();
 
 
-
+    

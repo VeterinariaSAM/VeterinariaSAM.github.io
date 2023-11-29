@@ -9,6 +9,8 @@ body {
   background: url('../Imageneshtml/fondoNavidad.jpg') center center fixed;
   background-size: cover;
   font-family: "Ubuntu", helvetica;
+  height: 100vh; /* Asegura que el fondo cubra al menos el 100% de la altura de la pantalla */
+  margin: 0; /* Elimina el margen predeterminado del cuerpo */
 }
 
 a {

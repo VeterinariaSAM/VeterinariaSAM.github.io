@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Imageneshtml/icono.png">
+    <link rel="stylesheet" href="estilos/app.css">
+    <link rel="stylesheet" href="estilos/estiloIndex.css">
+    <title>Agendas Realizadas</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<div class="one-header">
+    <script src="./js/navbar.js"></script>
+</div>
+
+<body>
+    <br><br><br><br><br><br><br><br><br>
+    <h2>Citas Agendadas con exito</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre Propietario</th>
+                <th>Teléfono</th>
+                <th>Correo Electrónico</th>
+                <th>Nombre Mascota</th>
+                <th>Tipo Mascota</th>
+                <th>Edad Mascota</th>
+                <th>Tipo Cita</th>
+                <th>Fecha Cita</th>
+                <th>Hora Cita</th>
+                <th>Comentarios</th>
+            </tr>
+        </thead>
+        <tbody id="agendaTableBody"></tbody>
+    </table>
+</body>
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const agendaTableBody = document.getElementById('agendaTableBody');
+
+            // Obtener datos del Local Storage
+            const storedData = localStorage.getItem('appointmentData');
+
+            if (storedData) {
+                const appointments = JSON.parse(storedData);
+
+                // Agregar datos a la tabla
+                const row = agendaTableBody.insertRow();
+                for (const key in appointments) {
+                    if (appointments.hasOwnProperty(key)) {
+                        const cell = row.insertCell();
+                        cell.innerHTML = appointments[key];
+                    }
+                }
+            } else {
+                // No hay citas agendadas
+                const noAppointmentsRow = agendaTableBody.insertRow();
+                const noAppointmentsCell = noAppointmentsRow.insertCell();
+                noAppointmentsCell.colSpan = 10;
+                noAppointmentsCell.innerHTML = 'No hay citas agendadas.';
+            }
+        });
+    </script>
+</html>

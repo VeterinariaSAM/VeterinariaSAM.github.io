@@ -1,117 +1,100 @@
 function guardar() {
-    // Obtener los valores de los campos del formulario
-    var nombre = document.getElementById("name").value;
-    var apellido = document.getElementById("last").value;
-    var nombre_usuario = document.getElementById("usName").value;
-    var correo = document.getElementById("email").value;
-    var fecha_nac = document.getElementById("fechaNac").value;
-    var contraseña = document.getElementById("password").value;
-    var confirmPassword = document.getElementById("confirmPassword").value;
+    var nombre = document.getElementById('name').value;
+    var apellido = document.getElementById('last').value;
+    var email = document.getElementById('email').value;
+    var usName = document.getElementById('usName').value;
+    var fechaNac = document.getElementById('fechaNac').value;
+    var password = document.getElementById('password').value;
+    var confirmPassword = document.getElementById('confirmPassword').value;
 
-    // Realizar validaciones
-    if (!nombre || !apellido || !nombre_usuario || !correo || !fecha_nac || !contraseña || !confirmPassword) {
-        alert("Todos los campos son obligatorios");
+    // Validación de campos obligatorios
+    if (!nombre || !apellido || !email || !usName || !fechaNac || !password || !confirmPassword) {
+        Swal.fire("Error", "Todos los campos son obligatorios", "error");
         return;
     }
 
-    // Validar la fecha de nacimiento
-    var fechaNacimiento = new Date(fecha_nac);
-    var hoy = new Date();
-    var edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
-
-    if (edad < 18) {
-        alert("Debes ser mayor de 18 años para registrarte");
+    // Validaciones adicionales
+    if (password.length < 8) {
+        Swal.fire("Error", "La contraseña debe tener al menos 8 caracteres", "error");
         return;
     }
 
-    // Validar longitud de contraseña
-    if (contraseña.length < 8) {
-        alert("La contraseña debe tener al menos 8 caracteres");
+    if (password !== confirmPassword) {
+        Swal.fire("Error", "Las contraseñas no coinciden", "error");
         return;
     }
 
-    // Validar contraseñas coincidentes
-    if (contraseña !== confirmPassword) {
-        alert("Las contraseñas no coinciden");
+    var today = new Date();
+    var birthDate = new Date(fechaNac);
+    var age = today.getFullYear() - birthDate.getFullYear();
+
+    if (age < 18) {
+        Swal.fire("Error", "Debes tener al menos 18 años para registrarte", "error");
         return;
     }
 
-    // Crear el usuario en Firebase Authentication
-    auth.createUserWithEmailAndPassword(correo, contraseña)
+    // Registra usuario en Firebase Authentication
+    firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
-            // Obtener el ID del usuario registrado
-            var userId = userCredential.user.uid;
-
-            // Guardar información en Firestore
-            firestore.collection("usuarios").doc(userId).set({
+            // Guarda datos adicionales en Firestore
+            firebase.firestore().collection("usuarios").doc(userCredential.user.uid).set({
                 nombre: nombre,
                 apellido: apellido,
-                nombre_usuario: nombre_usuario,
-                correo: correo,
-                fecha_nac: fecha_nac,
+                email: email,
+                contraseña: password,
+                nombre_usuario: usName,
+                fechaNac: fechaNac
             })
-            .then(() => {
-                // Mostrar un mensaje de éxito con SweetAlert
-                Swal.fire({
-                    title: 'Registro exitoso',
-                    text: 'Tu registro se ha completado correctamente',
-                    icon: 'success',
-                    timer: 2000,
-                    showConfirmButton: false
-                }).then(() => {
-                    // Ocultar el formulario de registro
-                    document.getElementById("registrarse").style.display = "none";
-                    // Mostrar el formulario de inicio de sesión
-                    document.getElementById("iniciar-sesion").style.display = "block";
+                .then(() => {
+                    // Registro exitoso
+                    Swal.fire("Éxito", "Usuario registrado correctamente", "success")
+                        .then(() => {
+                            // Redirecciona al usuario a iniciar sesión
+                            window.location.href = "iniciar_Sesion#inicio-sesion";
+                        });
+                })
+                .catch((error) => {
+                    Swal.fire("Error", "Error al guardar datos adicionales: " + error.message, "error");
                 });
-            })
-            .catch((error) => {
-                console.error("Error al crear usuario:", error.code, error.message);
-                // Mostrar un mensaje de error genérico con SweetAlert
-                Swal.fire({
-                    title: 'Error',
-                    text: 'Hubo un problema al registrar tus datos en Firestore. Por favor, inténtalo de nuevo.',
-                    icon: 'error',
-                });
-            });
         })
         .catch((error) => {
-            // Mostrar un mensaje de error genérico con SweetAlert
-            Swal.fire({
-                title: 'Error',
-                text: 'Hubo un problema al registrar tus datos en Authentication. Por favor, inténtalo de nuevo.',
-                icon: 'error',
-            });
+            Swal.fire("Error", "Error en el registro: " + error.message, "error");
         });
 }
 
-
-
-function mostrarMensajeExito(mensaje) {
+function iniciarSesionGoogle() {
+    // Muestra SweetAlert indicando que se está iniciando sesión con Google
     Swal.fire({
-        title: 'Registro exitoso',
-        text: mensaje,
-        icon: 'success',
-        timer: 2000,
-        showConfirmButton: false
-    }).then(() => {
-        // Puedes realizar alguna acción adicional después de que se cierre el mensaje
+        title: "Iniciando sesión",
+        text: "Espere un momento...",
+        icon: "info",
+        showConfirmButton: false,
+        allowOutsideClick: false
     });
-}
 
-function mostrarMensajeError(mensaje) {
-    Swal.fire({
-        title: 'Error',
-        text: mensaje,
-        icon: 'error',
-    });
-}
+    var provider = new firebase.auth.GoogleAuthProvider();
 
-function mostrarMensajeAdvertencia(mensaje) {
-    Swal.fire({
-        title: 'Advertencia',
-        text: mensaje,
-        icon: 'warning',
-    });
-}
+    firebase.auth().signInWithPopup(provider)
+        .then((result) => {
+            // Cierra el SweetAlert después de iniciar sesión
+            Swal.close();
 
+            // Verifica si el usuario ya está registrado
+            var isNewUser = result.additionalUserInfo.isNewUser;
+
+            if (isNewUser) {
+                // Si es un nuevo usuario, muestra SweetAlert de registro exitoso
+                Swal.fire("Éxito", "Registro con Google exitoso!", "success");
+            } else {
+                // Si el usuario ya existe, muestra SweetAlert de cuenta ya registrada
+                Swal.fire("Advertencia", "Esta cuenta ya está registrada", "warning");
+            }
+        })
+        .catch((error) => {
+            // Cierra el SweetAlert en caso de error
+            Swal.close();
+
+            // Muestra SweetAlert en caso de error
+            Swal.fire("Error", "Error en el registro con Google: " + error.message, "error");
+        });
+}

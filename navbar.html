@@ -5,17 +5,26 @@
         <div class="header-title">
             <button id="toggleSidebar">☰</button>
             <div class="header-logo">
-                <a href="index.html">
+                <a href="inicio.html">
                     <img src="Imageneshtml/LogoSam2 (2).png" alt="Logo">
                 </a>
             </div>
         </div>
-        <div class="menu-icon" onclick="toggleMenu()">
-            <a href="iniciar_Sesion.html" class="header-button">
-                <span id="userStatus"></span>
-                <span id="nombreDeUsuario"></span>
-                <img src="Imageneshtml/usuario.png" alt="Usuario">
-            </a>
+        <div class="navbar" id="navbar">
+            <div class="navbar-left">
+                <button type="button" onclick="terminaSesión()">Cerrar Sesión</button>
+                <fieldset>
+                    <legend>Email</legend>
+                    <output id="email"><progress max="100">Cargando…</progress></output>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Nombre</legend>
+                    <output id="nombre"></output>
+                </fieldset>
+                <br>
+            </div>
+            <figure><img src="" id="avatar" alt="avatar" class="navbar-profile-image"></figure>
         </div>
 
         <a href="compras.html" class="header-button">
@@ -28,7 +37,51 @@
         <li class="active"><a href="citas.html">Agendar Cita</a></li>
         <li class="active"><a href="somos.html">¿Quienes Somos?</a></li>
         <li class="active"><a href="Dudas.html">Preguntas frecuentes</a></li>
+        <li class="active"><a href="ver_Citas.html">Ver citas</a></li>
+
     </ul>
 </nav>
 
 <script src="js/navegacion.js"></script>
+
+
+<script>
+    const auth = firebase.auth();
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    provider.setCustomParameters({ prompt: "select_account" });
+
+    auth.onAuthStateChanged(
+        usuarioAuth => {
+            const navbar = document.getElementById('navbar');
+
+            if (usuarioAuth && usuarioAuth.email) {
+                email.value = usuarioAuth.email;
+                nombre.value = usuarioAuth.displayName;
+                avatar.src = usuarioAuth.photoURL;
+
+                // Muestra el div si el usuario ha iniciado sesión
+                navbar.style.display = 'block';
+            } else {
+                // Oculta el div si el usuario no ha iniciado sesión
+                navbar.style.display = 'none';
+                auth.signInWithRedirect(provider);
+            }
+        },
+        procesaError
+    );
+
+    async function terminaSesión() {
+        try {
+            await auth.signOut();
+            window.location.href = "index.html";
+        } catch (e) {
+            procesaError(e);
+        }
+    }
+
+    function procesaError(e) {
+        console.log(e);
+        alert(e.message);
+    }
+</script>

@@ -7,176 +7,175 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Veterinaria SAM</title>
     <link rel="icon" href="Imageneshtml/icono.png">
-    <link rel="stylesheet" href="estilos/estiloAgenda.css">
     <link rel="stylesheet" href="estilos/app.css">
+
+    <style>
+        #formulario-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            max-width: 100%;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .appointment-form label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .appointment-form input,
+        .appointment-form select,
+        .appointment-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .tipo-cita {
+            margin-bottom: 12px;
+        }
+
+        .radio-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .radio-group input {
+            margin-right: 6px;
+        }
+
+        .appointment-form textarea {
+            resize: vertical;
+        }
+
+        .appointment-form input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .appointment-form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <div class="container">
-        
-        <div class="one-header">
-            <script src="./js/navbar.js"></script>
-        </div>
+    <center>
+        <section>
+            <div class="container">
 
-           <div class="container">
-            <h1>Agendar Cita</h1>
-            <div class="image-container">
-                <img src="Imageneshtml/LogoSAM.png" alt="Veterinaria">
+                <div class="one-header">
+                    <script src="./js/navbar.js"></script>
+                </div>
+
+
+                <div id="formulario-container">
+                    <form action="#" method="post" class="appointment-form" id="appointmentForm">
+                        <!-- Datos generales del propietario -->
+                        <label for="nombre">Nombre del propietario:</label>
+                        <input type="text" id="nombre" name="nombre" required>
+
+                        <label for="telefono">Teléfono:</label>
+                        <input type="tel" id="telefono" name="telefono" required>
+
+                        <label for="correo">Correo electrónico:</label>
+                        <input type="email" id="correo" name="correo" required>
+
+                        <!-- Detalles de la mascota -->
+                        <label for="nombreMascota">Nombre de la mascota:</label>
+                        <input type="text" id="nombreMascota" name="nombreMascota" required>
+
+                        <label for="tipoMascota">Tipo de mascota:</label>
+                        <select id="tipoMascota" name="tipoMascota" required>
+                            <option value="" disabled selected>Seleccione una opción</option>
+                            <option value="Perro">Perro</option>
+                            <option value="Gato">Gato</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+
+                        <label for="edadMascota">Edad de la mascota:</label>
+                        <input type="number" id="edadMascota" name="edadMascota" required>
+
+                        <!-- Tipo de cita -->
+                        <div class="tipo-cita">
+                            <label>Tipo de cita:</label>
+                            <div class="radio-group">
+                                <input type="radio" id="citaMedica" name="tipoCita" value="Cita Médica" required>
+                                <label for="citaMedica">Cita Médica</label>
+                            </div>
+
+                            <div class="radio-group">
+                                <input type="radio" id="citaEstetica" name="tipoCita" value="Cita Estética" required>
+                                <label for="citaEstetica">Cita Estética</label>
+                            </div>
+                        </div>
+
+                        <!-- Fecha y hora de la cita -->
+                        <label for="fechaCita">Fecha de la cita:</label>
+                        <input type="date" id="fechaCita" name="fechaCita" required>
+
+                        <label for="horaCita">Hora de la cita:</label>
+                        <input type="time" id="horaCita" name="horaCita" min="08:00" max="19:00" required>
+
+                        <!-- Otros datos extras -->
+                        <label for="comentarios">Comentarios adicionales:</label>
+                        <textarea id="comentarios" name="comentarios" rows="4" cols="50"></textarea>
+
+                        <input type="submit" value="Agendar Cita" id="submitBtn">
+                    </form>
+                </div>
+
+
+
+
+
+
+                <div class="whatsapp-icon">
+                    <a href="https://api.whatsapp.com/send?phone=19722004464" target="_blank">
+                        <img src="Imageneshtml/Whatsapplogo.png" alt="WhatsApp">
+                        <span class="whatsapp-message">Escríbenos😋</span>
+                    </a>
+                </div>
             </div>
-            <form action="#" method="post" class="appointment-form">
-                <!-- Datos generales del propietario -->
-                <label for="nombre">Nombre del propietario:</label>
-                <input type="text" id="nombre" name="nombre" required>
+        </section>
+    </center>
 
-                <label for="telefono">Teléfono:</label>
-                <input type="tel" id="telefono" name="telefono" required>
-
-                <label for="correo">Correo electrónico:</label>
-                <input type="email" id="correo" name="correo" required>
-
-                <!-- Detalles de la mascota -->
-                <label for="nombreMascota">Nombre de la mascota:</label>
-                <input type="text" id="nombreMascota" name="nombreMascota" required>
-
-                <label for="tipoMascota">Tipo de mascota:</label>
-                <select id="tipoMascota" name="tipoMascota" required>
-                    <option value="" disabled selected>Seleccione una opción</option>
-                    <option value="Perro">Perro</option>
-                    <option value="Gato">Gato</option>
-                    <option value="Otro">Otro</option>
-                </select>
-
-                <label for="edadMascota">Edad de la mascota:</label>
-                <input type="number" id="edadMascota" name="edadMascota" required>
-
-                <!-- Tipo de cita -->
-                <label for="tipoCita">Tipo de cita:</label>
-                <input type="radio" id="citaMedica" name="tipoCita" value="Cita Médica" required>
-                <label for="citaMedica">Cita Médica</label>
-                <input type="radio" id="citaEstetica" name="tipoCita" value="Cita Estética" required>
-                <label for="citaEstetica">Cita Estética</label>
-
-                <!-- Fecha y hora de la cita -->
-                <label for="fechaCita">Fecha de la cita:</label>
-                <input type="date" id="fechaCita" name="fechaCita" required>
-
-                <label for="horaCita">Hora de la cita:</label>
-                <input type="time" id="horaCita" name="horaCita" min="08:00" max="19:00" required>
-
-                <!-- Otros datos extras -->
-                <label for="comentarios">Comentarios adicionales:</label>
-                <textarea id="comentarios" name="comentarios" rows="4" cols="50"></textarea>
-
-                <input type="submit" value="Agendar Cita">
-            </form>
-        </div>
-        
-
-
-        <style>
-            /* Estilos generales */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
-}
-
-.container {
-    width: 100%; /* Ocupa todo el ancho de la página */
-    display: flex;
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: center;
-    min-height: 100vh; /* Para asegurarse de que el formulario esté centrado verticalmente */
-    padding: 20px;
-}
-
-/* Estilos del formulario */
-.image-container img {
-    width: 400px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.appointment-form {
-    width: 100%; /* Ocupa todo el ancho disponible */
-    max-width: 600px; /* Limita el ancho máximo del formulario */
-    background-color: #fff;
-    padding: 30px; /* Aumenté el padding para un aspecto más espaciado */
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-label {
-    display: block;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-input[type="text"],
-input[type="tel"],
-input[type="email"],
-select,
-textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-top: 5px;
-    transition: border-color 0.3s ease; /* Agregué una transición suave al borde */
-}
-
-input[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
-}
-
-input[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-/* Animación al hacer clic en los campos */
-input:focus,
-select:focus,
-textarea:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px #007bff;
-    outline: none;
-}
-
-        </style>
-
-
-
-
-
-
-        <div class="whatsapp-icon">
-            <a href="https://api.whatsapp.com/send?phone=19722004464" target="_blank">
-                <img src="Imageneshtml/Whatsapplogo.png" alt="WhatsApp">
-                <span class="whatsapp-message">Escríbenos😋</span>
-            </a>
-        </div>
-    </div>
+    <button type="submit" onclick="window.location.href='ver_Citas.html';">Revisa tu cita agendada!</button>
 
     <footer>
         <div class="footer-container">
             <div class="social-media">
                 <ul>
-                    <li><a href="https://www.facebook.com/profile.php?id=100095350443486"
-                        target="_blank"><img src="Imageneshtml/logoFB.png" alt="Facebook"></a></li>
-                <li><a href="https://instagram.com/vet_s.a.m?igshid=MzNlNGNkZWQ4Mg=="
-                        target="_blank"><img src="Imageneshtml/logoIG.png" alt="Instagram"></a></li>
-                        <li><a href="https://api.whatsapp.com/send?phone=19722004464" target="_blank"><img src="Imageneshtml/logoWA.png" alt="WhatsApp"></a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=100095350443486" target="_blank"><img
+                                src="Imageneshtml/logoFB.png" alt="Facebook"></a></li>
+                    <li><a href="https://instagram.com/vet_s.a.m?igshid=MzNlNGNkZWQ4Mg==" target="_blank"><img
+                                src="Imageneshtml/logoIG.png" alt="Instagram"></a></li>
+                    <li><a href="https://api.whatsapp.com/send?phone=19722004464" target="_blank"><img
+                                src="Imageneshtml/logoWA.png" alt="WhatsApp"></a></li>
 
-                <p>&copy; 2023 Veterinaria S.A.M Phantoms</p>
+                    <p>&copy; 2023 Veterinaria S.A.M Phantoms</p>
                     <p>Calle Glorieta de Fuente de Petróleos 340, Evolucion, 57700 Nezahualcóyotl, Méx.</p>
                 </ul>
             </div>
@@ -288,6 +287,87 @@ textarea:focus {
 
 
     <script src="js/navegacion.js"></script>
+
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('appointmentForm');
+            const submitBtn = document.getElementById('submitBtn');
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                // Validar campos antes de enviar
+                if (validateForm()) {
+                    // Obtener los datos del formulario
+                    const formData = {
+                        nombre: document.getElementById('nombre').value,
+                        telefono: document.getElementById('telefono').value,
+                        correo: document.getElementById('correo').value,
+                        nombreMascota: document.getElementById('nombreMascota').value,
+                        tipoMascota: document.getElementById('tipoMascota').value,
+                        edadMascota: document.getElementById('edadMascota').value,
+                        tipoCita: document.querySelector('input[name="tipoCita"]:checked').value,
+                        fechaCita: document.getElementById('fechaCita').value,
+                        horaCita: document.getElementById('horaCita').value,
+                        comentarios: document.getElementById('comentarios').value
+                    };
+
+                    // Almacenar en el Local Storage
+                    localStorage.setItem('appointmentData', JSON.stringify(formData));
+
+                    // Mostrar mensaje de Sweet Alert
+                    swal("Cita Agendada", "¡Cita agendada con éxito!", "success");
+                }
+            });
+
+            function validateForm() {
+                // Obtener todos los campos del formulario
+                const formElements = form.elements;
+
+                // Iterar sobre los campos y validar
+                for (let i = 0; i < formElements.length; i++) {
+                    const field = formElements[i];
+
+                    if (field.type !== "submit" && field.type !== "button") {
+                        if (field.value.trim() === "") {
+                            // Mostrar mensaje de error con Sweet Alert
+                            swal("Error", "Por favor, completa todos los campos.", "error");
+                            return false; // Detener el envío del formulario
+                        }
+
+                        // Validar límites de caracteres
+                        if (field.id === 'nombre' && field.value.length > 30) {
+                            swal("Error", "El nombre del propietario no puede exceder los 30 caracteres.", "error");
+                            return false;
+                        }
+
+                        if (field.id === 'telefono' && (isNaN(field.value) || field.value.length !== 10)) {
+                            swal("Error", "Ingresa un número de teléfono válido (10 dígitos).", "error");
+                            return false;
+                        }
+
+                        if (field.id === 'nombreMascota' && field.value.length > 20) {
+                            swal("Error", "El nombre de la mascota no puede exceder los 20 caracteres.", "error");
+                            return false;
+                        }
+
+                        if (field.id === 'comentarios' && field.value.length > 250) {
+                            swal("Error", "Los comentarios no pueden exceder los 250 caracteres.", "error");
+                            return false;
+                        }
+                    }
+                }
+
+                // Todos los campos están completos y cumplen con las restricciones
+                return true;
+            }
+        });
+    </script>
+
+
 </body>
 
 </html>

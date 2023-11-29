@@ -1,3 +1,6 @@
+// configuracion.js
+
+// Inicializa Firebase con la configuración
 firebase.initializeApp({
   apiKey: "AIzaSyAPJglEXod86d1WnNDOH4NUgJxcePFnRrQ",
   authDomain: "veterinaria-8174c.firebaseapp.com",
@@ -7,5 +10,9 @@ firebase.initializeApp({
   appId: "1:395802423629:web:37bb2c198682c8fd5e4704"
 });
 
+// Exporta el objeto de configuración (opcional)
+window.firebaseConfig = firebase.app().options;
+
+// Inicializa Firestore y Auth (opcional, si los usas)
 var db = firebase.firestore();
-var auth = firebase.auth(); 
+var auth = firebase.auth();

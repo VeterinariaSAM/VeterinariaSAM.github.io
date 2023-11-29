@@ -7,7 +7,7 @@
     <title>Veterinaria SAM</title>
     <link rel="icon" href="Imageneshtml/icono.png">
     <link rel="stylesheet" type="text/css" href="estilos/agregar.css">
-    <script src="jsDb/admin.js"></script>
+    <script src="jsDb/validar_Usuario.js"></script>
 
     <style>
         .menu-icon {
@@ -65,16 +65,15 @@
                         </a>
                     </div>
                 </div>
-                <div class="menu-icon" onclick="toggleMenu()">
+                <div class="menu-icon">
                     <span id="userStatus"></span>
                     <span id="nombreDeUsuario">Admin</span>
                     <button onclick="cerrarSesion()" class="boton-cerrar-sesion">Cerrar Sesión</button>
                 </div>
 
-                <div class="menu-icons" onclick="toggleMenu()">
+                <div class="menu-icons">
                     <a href="iniciar_Sesion.html" class="header-button">
                         <span id="userStatus"></span>
-                        <span id="nombreDeUsuario"></span>
                         <img src="Imageneshtml/usuario.png" alt="Usuario">
                     </a>
                 </div>

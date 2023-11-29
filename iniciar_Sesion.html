@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <link rel="icon" href="Imageneshtml/icono.png">
     <meta charset=" UTF-8" />
     <meta name="viewport"
@@ -12,15 +11,15 @@
     <link rel="icon" href="Imageneshtml/icono.png">
     <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="jsDb/admin.js"></script>s
-    <script src="jsDb/usuario.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
 
 
 
     <!-- Estilos -->
     <link rel="stylesheet" href="estilos/estiloSesion.css" />
 
-    <title>Formulario Login y Registro de Usuarios</title>
+    <title>Login Veterinaria SAM</title>
 
 </head>
 
@@ -44,7 +43,7 @@
             <!-- Iniciar Sesion -->
             <div id="iniciar-sesion" style="display: none;">
                 <h1>Iniciar Sesión</h1>
-                <form action="#" method="post" onsubmit="return validarAdministrador()">
+                <form action="#" method="post" onsubmit="return validarYIniciarSesion()" id="inicio-sesion">
                     <div class="contenedor-input">
                         <label for="correoInicioSesion"> Correo <span class="req">*</span> </label>
                         <input type="email" id="correoInicioSesion" required />
@@ -54,11 +53,12 @@
                         <input type="password" id="passwordInicioSesion" required />
                     </div>
                     <div class="contenedor-input">
-                        <p class="leyenda">Inicia sesion con: </p>
+                        <p class="leyenda">Inicia sesión con: </p>
                         <button type="button" onclick="iniciarSesionGoogle()" class="button-google">
                             <img src="Imageneshtml/google_logo.jpg" alt="Iniciar sesión con Google" />
                         </button>
                     </div>
+                    
                     <p class="forgot"><a href="#">Se te olvidó la contraseña?</a></p>
                     <input type="submit" class="button button-block" value="Iniciar Sesión" />
                 </form>
@@ -199,7 +199,7 @@
                 event.preventDefault();
 
                 // Obtener la fecha de nacimiento ingresada por el usuario
-                var fechaNacimiento = new Date(
+                var fechaNac = new Date(
                     document.getElementById("fechaNacimiento").value
                 );
 
@@ -207,7 +207,7 @@
                 var fechaActual = new Date();
 
                 // Calcular la diferencia de años
-                var edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
+                var edad = fechaActual.getFullYear() - fechaNac.getFullYear();
 
                 // Verificar si la edad es menor a 18
                 if (edad < 18) {
@@ -242,13 +242,13 @@
             });
     </script>
 
+
+    <!-- Scripts para la inicializacion de Fb y Fs  -->
     <script src="jsDb/configuracion.js"></script>
     <script src="jsDb/guardar.js"></script>
+    <script src="jsDb/validar_Usuario.js"></script>
 
-    <!-- Scripts para inicio de sesion  -->
-
-
-
+    
 
 </body>
 
